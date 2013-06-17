@@ -1,19 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<%@ include file="/common/taglibs.jsp"%>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <title>Template &middot; Bootstrap</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/app.css" rel="stylesheet">
-
-    <style type="text/css">
-      .club-wrapper{
+<head>
+	<%@ include file="/common/head-inner.jsp"%>
+	<style type="text/css">
+		      .club-wrapper{
         margin: 0;
         width: 50%;
         float: left;
@@ -37,29 +30,16 @@
         border-radius: 4px;
         box-shadow: 0px 1px 4px #DDD;
       }
-      
-    </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	</style>
+</head>
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="ico/favicon.png">
-  </head>
 
   <body>
 
     <div class="container">
 
       <div class="masthead">
-          
+
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">数据</a></li>
           <li><a href="#">视频</a></li>
@@ -67,7 +47,7 @@
 
         <div class="user-info pull-right">
               <span class="user-name">
-                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>    
+                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>
               </span>
               <a href="">退出</a>
             </div>
@@ -88,15 +68,11 @@
       <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
       <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
 
-      
+
 
     </div> <!-- /container -->
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <%@ include file="/common/import-js.jsp"%>
 
   </body>
 </html>
