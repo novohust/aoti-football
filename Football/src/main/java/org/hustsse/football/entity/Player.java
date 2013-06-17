@@ -20,6 +20,10 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class Player extends IdEntity {
+
+	private String name;
+	private String password;
+
 	private Team team;
 	private Account account;
 	private List<BodyInfo> bodyInfos;
@@ -93,5 +97,20 @@ public class Player extends IdEntity {
 		this.videos = videos;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 }
