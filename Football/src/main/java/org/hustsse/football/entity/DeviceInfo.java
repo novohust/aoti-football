@@ -1,5 +1,6 @@
 package org.hustsse.football.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,11 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class DeviceInfo extends IdEntity {
+
+	//时间信息 TO BE CONTINUED...
+	private Date infoDate;
+
+
 	private Player player;
 
 	@ManyToOne(fetch=FetchType.LAZY)

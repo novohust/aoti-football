@@ -17,6 +17,10 @@ import javax.persistence.Table;
 @Table
 public class Club extends IdEntity {
 
+	private String name;   //俱乐部名称
+	private String flagpath;//俱乐部标志路径
+
+
 	private List<Team> teams;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "club", cascade = { CascadeType.REMOVE })
@@ -27,6 +31,23 @@ public class Club extends IdEntity {
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getFlagpath() {
+		return flagpath;
+	}
+
+	public void setFlagpath(String flagpath) {
+		this.flagpath = flagpath;
+	}
+
 
 
 }
