@@ -23,10 +23,10 @@ import javax.persistence.Table;
 public class Coach extends IdEntity {
 
 	private String name;
-	private String role;
-	private Date startTime;
-	private Date endTime;
-	private String description;
+	private String role;// 哪种教练？
+	private Date startTime; // 执教开始
+	private Date endTime;// 执教结束
+	private String description;// 描述
 
 	private Team team;
 	private Account account;
