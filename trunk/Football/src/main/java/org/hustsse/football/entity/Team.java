@@ -20,6 +20,10 @@ import javax.persistence.Table;
 @Table
 public class Team extends IdEntity {
 
+	private String name;   //队名
+	private String flagpath;//队旗路径
+
+
 	private Club club;
 	private List<Coach> coachs;
 	private List<Player> players;

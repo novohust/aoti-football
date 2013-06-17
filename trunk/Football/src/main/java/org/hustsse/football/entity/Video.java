@@ -1,5 +1,6 @@
 package org.hustsse.football.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,6 +24,69 @@ import org.hustsse.football.enums.PeriodEnum;
 @Entity
 @Table
 public class Video extends IdEntity {
+
+	//统计时间相关
+	private Date matchDate;//比赛时间
+
+	//视频信息
+	private String videoPath;//视频路径
+	private String videoType;//视频类型（射门，头球，点球etc）
+	private String videoDesc;//视频描述
+
+	//上传信息
+	private Date uploadTime;//上传时间
+	private String uploadName;//上传人
+
+
+
+
+	public Date getMatchDate() {
+		return matchDate;
+	}
+
+	public void setMatchDate(Date matchDate) {
+		this.matchDate = matchDate;
+	}
+
+	public String getVideoPath() {
+		return videoPath;
+	}
+
+	public void setVideoPath(String videoPath) {
+		this.videoPath = videoPath;
+	}
+
+	public String getVideoType() {
+		return videoType;
+	}
+
+	public void setVideoType(String videoType) {
+		this.videoType = videoType;
+	}
+
+	public String getVideoDesc() {
+		return videoDesc;
+	}
+
+	public void setVideoDesc(String videoDesc) {
+		this.videoDesc = videoDesc;
+	}
+
+	public Date getUploadTime() {
+		return uploadTime;
+	}
+
+	public void setUploadTime(Date uploadTime) {
+		this.uploadTime = uploadTime;
+	}
+
+	public String getUploadName() {
+		return uploadName;
+	}
+
+	public void setUploadName(String uploadName) {
+		this.uploadName = uploadName;
+	}
 
 	private PeriodEnum period;
 
