@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>中国足球数据服务中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+
+    <style type="text/css">
+.video-type-wrapper{
+        margin: 0;
+        width: 33%;
+        float: left;
+      }
+      .video-type{
+        margin: 10px 16px;
+height: 50px;
+font-size: 20px;
+font-weight: bold;
+position: relative;
+display: block;
+line-height: 50px;
+color: #777;
+background-image: -moz-linear-gradient(top, #FFF, #F4F4F4);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#F4F4F4));
+background-image: -webkit-linear-gradient(top, #FFF, #F4F4F4);
+background-image: -o-linear-gradient(top, #FFF, #F4F4F4);
+background-image: linear-gradient(to bottom, #FFF, #F4F4F4);
+text-shadow: 0 1px 0 #FFF;
+border: solid 1px #DDD;
+border-radius: 4px;
+box-shadow: 0px 1px 4px #DDD;
+padding-left:17px;
+cursor:pointer;
+      }
+      .video-type .label{
+        position: absolute;
+font-size: 15px;
+right: 15px;
+top: 16px;
+      }
+      .video-type:hover .type-name{
+        color:#333;
+      }
+      .disabled{background-image: none;
+box-shadow: none;
+background-color: #f7f7f7;
+cursor:default;
+}
+      .disabled:hover .type-name{
+        color:#777;
+      }
+      form{margin-left:16px;}
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="masthead">
+          
+        <ul class="nav nav-pills pull-right">
+          <li><a href="#">数据</a></li>
+          <li class="active"><a href="#">视频</a></li>
+        </ul>
+
+        <div class="user-info pull-right">
+              <span class="user-name">
+                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>    
+              </span>
+              <a href="">退出</a>
+            </div>
+        <h3 class="muted">中国足球数据服务中心
+              <ul class="breadcrumb">
+                <li><a href="#">卓尔</a> <span class="divider">/</span></li>
+                <li>张野 </li>
+              </ul>
+        </h3>
+      </div>
+
+      <hr>
+
+      <form action="">
+        <input type="text" placeholder="请选择日期" class="datepicker-dropdown-year-month input-medium">
+        <select name="" id="" class="input-small">
+          <option value="">上午</option>
+          <option value="">下午</option>
+        </select>
+      </form>
+      
+      <div class="video-type-wrapper"><div class="video-type"><span class="type-name">射门<span>   <span class="label label-success">9</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type disabled"><span class="type-name">传球<span>   <span class="label label-important">0</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type"><span class="type-name">进球<span>   <span class="label label-success">9</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type disabled"><span class="type-name">传中<span>   <span class="label label-important">0</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type disabled"><span class="type-name">犯规<span>   <span class="label label-important">0</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type"><span class="type-name">失球<span>   <span class="label label-success">9</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type disabled"><span class="type-name">红黄牌<span>   <span class="label label-important">0</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type disabled"><span class="type-name">越位<span>   <span class="label label-important">0</span></div></div>
+      <div class="video-type-wrapper"><div class="video-type"><span class="type-name">任意球<span>   <span class="label label-success">9</span></div></div>
+
+
+
+
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.noty.js"></script>
+    <script src="js/jquery.uploadify-3.1.min.js"></script>
+    <script src="js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="js/jquery-ui-i18n.js"></script>
+    <script src="js/app.js"></script>
+
+
+  </body>
+</html>
