@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Player extends IdEntity {
 
 	private String name;
-	private String password;
+	private String number;//号码
 
 	private Team team;
 	private Account account;
@@ -105,12 +105,13 @@ public class Player extends IdEntity {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getNumber() {
+		return number;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setNumber(String number) {
+		this.number = number;
 	}
+
 
 }
