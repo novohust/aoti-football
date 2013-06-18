@@ -157,7 +157,7 @@
         <h3 id="myModalLabel" >登录</h3>
       </div>
       <div class="modal-body logindialog">
-      <form  id="login-form" action="${ctx}/login" method="post">
+      <form  id="login-form" action="${ctx}/account/login" method="post">
          <fieldset>
          <div class="error">
          <font color="red"><p id="msg"> </p></font>
@@ -207,6 +207,7 @@
 			resetForm:true,
 			beforeSubmit:function(){},
 			success:function(data){
+				var result  = eval(data).result;
 
 			});
     	  }
