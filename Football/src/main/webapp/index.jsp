@@ -61,12 +61,12 @@
 
       <hr>
 
+      <div class="club-wrapper"><a href="team.jsp" class="club">中超俱乐部</a></div>
       <div class="club-wrapper"><a href="team.html" class="club">中甲俱乐部</a></div>
-      <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
-      <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
-      <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
-      <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
-      <div class="club-wrapper"><a href="#" class="club">中甲俱乐部</a></div>
+      <div class="club-wrapper"><a href="#" class="club">中乙俱乐部</a></div>
+      <div class="club-wrapper"><a href="#" class="club">中乙俱乐部</a></div>
+      <div class="club-wrapper"><a href="#" class="club">省级运动队</a></div>
+      <div class="club-wrapper"><a href="#" class="club">市级运动队</a></div>
 
 
 
