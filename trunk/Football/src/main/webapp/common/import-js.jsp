@@ -4,6 +4,7 @@
 <script src="${ctx}/static/js/jquery-ui-1.10.0.custom.min.js"></script>
 <script src="${ctx}/static/js/jquery-ui-i18n.js"></script>
 <script src="${ctx}/static/js/jquery.noty.js"></script>
+<script src="${ctx}/static/js/jquery.form.js"></script>
 <script src="${ctx}/static/js/jquery.uploadify-3.1.min.js"></script>
 <script src="${ctx}/static/js/highcharts.js"></script>
 <script src="${ctx}/static/js/bootstrap.min.js"></script>
