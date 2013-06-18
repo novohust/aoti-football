@@ -21,4 +21,8 @@ public class AccountService {
 	public Account findById(Long id) {
 		return accountDao.findUniqueBy("id", id);
 	}
+
+	public Boolean validateAccount(Account account){
+		return false;
+	}
 }
