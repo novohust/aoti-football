@@ -177,7 +177,8 @@
     </div>
 
 
-     <%@ include file="/common/import-js.jsp"%>
+   <%@ include file="/common/import-js.jsp"%>
+
     <script type="text/javascript">
       function teamClick(){
         $("#loginModal").modal();
@@ -203,12 +204,13 @@
 			 msg.innerHTML="登录密码不能为空"
     		 pwd.focus();
     	  }else {
-			$('#login-form').ajaxSubmit(
+			$('#login-form').ajaxSubmit({
 			resetForm:true,
 			beforeSubmit:function(){},
 			success:function(data){
-				var result  = eval(data).result;
-
+				//var result  = eval(data).result;
+				location.href ="data-index-player.html"
+			}
 			});
     	  }
 
