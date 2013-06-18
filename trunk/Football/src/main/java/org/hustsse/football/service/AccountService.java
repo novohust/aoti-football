@@ -22,7 +22,9 @@ public class AccountService {
 		return accountDao.findUniqueBy("id", id);
 	}
 
+	//验证账户信息
 	public Boolean validateAccount(Account account){
+		////sdfsdf
 		return false;
 	}
 }
