@@ -1,5 +1,6 @@
 package org.hustsse.football.entity;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -84,6 +85,13 @@ public class Skills extends IdEntity {
 
 
 	private Player player;
+
+	public static void main(String[] args) {
+		Field[] fields = Skills.class.getDeclaredFields();
+		for (Field field : fields) {// --for() begin
+			System.out.println("<input type='hidden' name='attr' value='"+field.getName()+"'/>");
+		}
+	}
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "player_id")

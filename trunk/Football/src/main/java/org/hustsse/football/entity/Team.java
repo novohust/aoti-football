@@ -66,6 +66,22 @@ public class Team extends IdEntity {
 		this.matchStatistics = matchStatistics;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getFlagpath() {
+		return flagpath;
+	}
+
+	public void setFlagpath(String flagpath) {
+		this.flagpath = flagpath;
+	}
+
 
 
 }
