@@ -4,6 +4,7 @@
 	<title>中国足球数据服务中心</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="${ctx}/static/css/bootstrap.css" rel="stylesheet">
+	<link href="${ctx}/static/css/uploadify.css" rel="stylesheet">
 	<link href="${ctx}/static/css/app.css" rel="stylesheet">
 
 	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->

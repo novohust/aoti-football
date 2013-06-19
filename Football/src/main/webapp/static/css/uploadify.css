@@ -6,10 +6,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 .uploadify {
 	position: relative;
-	margin-bottom: 1em;
 }
 
 .uploadify-button {
+	font-weight:normal;
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
@@ -100,7 +100,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 }
 
 .uploadify-queue {
-	margin-bottom: 1em;
+	display:none;
 }
 .uploadify-queue-item {
 	background-color: #F5F5F5;
