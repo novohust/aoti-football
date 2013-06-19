@@ -1,28 +1,23 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-	<a style="display:none" href="${ctx}" id="app-ctx"></a>
+<div class="masthead">
 
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="brand" href="index.html"><span>考勤管理系统</span></a>
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">数据</a></li>
+          <li><a href="#">视频</a></li>
+        </ul>
 
-				<!-- start: Header Menu -->
-				<div class="nav-no-collapse header-nav">
-					<ul class="nav pull-right">
-						<!-- end: User Dropdown -->
-						<li  rel="tooltip" title="退出登录">
-							<a class="btn" href="#">
-								<i class="halflings-icon white off"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
+        <div class="user-info pull-right">
+              <span class="user-name">
+                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>
+              </span>
+              <a href="">退出</a>
+            </div>
+        <h3 class="muted">中国足球数据服务中心
+              <ul class="breadcrumb">
+                <li><a href="#">卓尔</a> <span class="divider">/</span></li>
+                <li>张猛 </li>
+              </ul>
+        </h3>
+      </div>
 
-				<div class=" pull-right" style="margin-top:10px;margin-right:10px;">
-					<i class="halflings-icon white user" style="margin-top:3px;"></i>&nbsp;欢迎回来，admin
-				</div>
-				<!-- end: Header Menu -->
-
-			</div>
-		</div>
-	</div>
+      <hr>
