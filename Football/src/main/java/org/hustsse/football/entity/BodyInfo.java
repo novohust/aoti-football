@@ -1,6 +1,9 @@
 package org.hustsse.football.entity;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -10,10 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hustsse.football.enums.PeriodEnum;
 
 /**
  * 体能
+ *
  * @author Anderson
  *
  */
@@ -23,50 +28,50 @@ public class BodyInfo extends IdEntity {
 	private Date date;
 	private PeriodEnum period;
 
-	//------ excel
-	private String totalDistance;	//总距离
-	private String totalDistanceF;	//上半场
-	private String totalDistanceS;	//下半场
+	// ------ excel
+	private String totalDistance; // 总距离
+	private String totalDistanceF; // 上半场
+	private String totalDistanceS; // 下半场
 
-	private String standDistance;	//站立距离
-	private String standDistanceF;	//上半场
-	private String standDistanceS;	//下半场
+	private String standDistance; // 站立距离
+	private String standDistanceF; // 上半场
+	private String standDistanceS; // 下半场
 
-	private String walkDistance;	//步行距离
-	private String walkDistanceF;	//上半场
-	private String walkDistanceS;	//下半场
+	private String walkDistance; // 步行距离
+	private String walkDistanceF; // 上半场
+	private String walkDistanceS; // 下半场
 
-	private String slowRunDistance;		//慢跑距离
-	private String slowRunDistanceF;	//上半场
-	private String slowRunDistanceS;	//下半场
+	private String slowRunDistance; // 慢跑距离
+	private String slowRunDistanceF; // 上半场
+	private String slowRunDistanceS; // 下半场
 
-	private String runDistanceAndTimes;		//奔跑距离/次数
-	private String runDistanceAndTimesF;	//上半场
-	private String runDistanceAndTimesS;	//下半场
+	private String runDistanceAndTimes; // 奔跑距离/次数
+	private String runDistanceAndTimesF; // 上半场
+	private String runDistanceAndTimesS; // 下半场
 
-	private String highSpeedRunDistanceAndTimes;	//高速奔跑距离/次数
-	private String highSpeedRunDistanceAndTimesF;	//上半场
-	private String highSpeedRunDistanceAndTimesS;	//下半场
+	private String highSpeedRunDistanceAndTimes; // 高速奔跑距离/次数
+	private String highSpeedRunDistanceAndTimesF; // 上半场
+	private String highSpeedRunDistanceAndTimesS; // 下半场
 
-	private String spurtDistanceAndTimes;	//冲刺距离/次数
-	private String spurtDistanceAndTimesF;	//上半场
-	private String spurtDistanceAndTimesS;	//下半场
+	private String spurtDistanceAndTimes; // 冲刺距离/次数
+	private String spurtDistanceAndTimesF; // 上半场
+	private String spurtDistanceAndTimesS; // 下半场
 
-	private String passTimes;	//传球/准确次数
-	private String battleTimes;	//对决/成功次数
-	private String inTime;	//上场时间
-	private String avgSpeed;	//平均速度
+	private String passTimes; // 传球/准确次数
+	private String battleTimes; // 对决/成功次数
+	private String inTime; // 上场时间
+	private String avgSpeed; // 平均速度
 
-	//------ img path
-	private String moveImgF;	//运动，上半场
-	private String moveImgS;	//运动，下半场
+	// ------ img path
+	private String moveImgF; // 运动，上半场
+	private String moveImgS; // 运动，下半场
 
-	private String spurtImgF;	//高速运动和冲刺，上半场
-	private String spurtImgS;	//高速运动和冲刺，下半场
+	private String spurtImgF; // 高速运动和冲刺，上半场
+	private String spurtImgS; // 高速运动和冲刺，下半场
 
 	private Player player;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "player_id")
 	public Player getPlayer() {
 		return player;
@@ -324,8 +329,5 @@ public class BodyInfo extends IdEntity {
 	public void setSpurtImgS(String spurtImgS) {
 		this.spurtImgS = spurtImgS;
 	}
-
-
-
 
 }
