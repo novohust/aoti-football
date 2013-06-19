@@ -215,7 +215,7 @@
 					 uname.focus();
 				}else
 				{
-				location.href ="data-index-player.html";
+					location.href ="players-index.jsp";
 				}
 			}
 			});
