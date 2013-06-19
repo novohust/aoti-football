@@ -208,8 +208,8 @@
 			resetForm:true,
 			beforeSubmit:function(){},
 			success:function(data){
-				var messsg  = eval(data).errorMsg;
-				if(messsg == "wrong")
+				var messsage  = eval(data).errorMsg;
+				if(messsage == "wrong")
 				{
 					 msg.innerHTML="登录名或密码错误";
 					 uname.focus();
