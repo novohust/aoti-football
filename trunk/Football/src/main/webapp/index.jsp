@@ -37,29 +37,7 @@
   <body>
 
     <div class="container">
-
-      <div class="masthead">
-
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">数据</a></li>
-          <li><a href="#">视频</a></li>
-        </ul>
-
-        <div class="user-info pull-right">
-              <span class="user-name">
-                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>
-              </span>
-              <a href="">退出</a>
-            </div>
-        <h3 class="muted">中国足球数据服务中心
-              <ul class="breadcrumb">
-                <li><a href="#">卓尔</a> <span class="divider">/</span></li>
-                <li>张猛 </li>
-              </ul>
-        </h3>
-      </div>
-
-      <hr>
+    	<%@ include file="/common/head-inner.jsp"%>
 
       <div class="club-wrapper"><a href="team.jsp" class="club">中超俱乐部</a></div>
       <div class="club-wrapper"><a href="team.html" class="club">中甲俱乐部</a></div>
