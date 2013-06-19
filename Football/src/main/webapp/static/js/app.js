@@ -1,15 +1,17 @@
-$(document).ready(function(){	
+$(document).ready(function(){
 	//other things to do on document ready, seperated for ajax calls
 	docReady();
 });
-		
-		
-function docReady(){	
+
+
+function docReady(){
+	$.extend({"appCtx":$("#app-ctx").attr('href')});
+
 	//prevent # links from moving to top
 	$('a[href="#"][data-top!=true]').click(function(e){
 		e.preventDefault();
 	});
-	
+
 	//datepicker
 	$('.datepicker').datepicker();
 	$('.datepicker-dropdown-year-month').datepicker({changeYear:true,changeMonth:true});

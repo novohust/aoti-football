@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+	<a style="display:none" href="${ctx}" id="app-ctx"></a>
+
 	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container-fluid">
