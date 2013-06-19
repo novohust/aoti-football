@@ -208,8 +208,15 @@
 			resetForm:true,
 			beforeSubmit:function(){},
 			success:function(data){
-				//var result  = eval(data).result;
-				location.href ="data-index-player.html"
+				var messsg  = eval(data).errorMsg;
+				if(messsg == "wrong")
+				{
+					 msg.innerHTML="登录名或密码错误";
+					 uname.focus();
+				}else
+				{
+				location.href ="data-index-player.html";
+				}
 			}
 			});
     	  }
