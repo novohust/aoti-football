@@ -3,6 +3,23 @@ $(document).ready(function(){
 	docReady();
 });
 
+$.fn.serializeJson=function(){
+	var serializeObj={};
+	var array=this.serializeArray();
+	var str=this.serialize();
+	$(array).each(function(){
+	if(serializeObj[this.name]){
+	if($.isArray(serializeObj[this.name])){
+	serializeObj[this.name].push(this.value);
+	}else{
+	serializeObj[this.name]=[serializeObj[this.name],this.value];
+	}
+	}else{
+	serializeObj[this.name]=this.value;
+	}
+	});
+	return serializeObj;
+	};
 
 function docReady(){
 	$.extend({"appCtx":$("#app-ctx").attr('href')});
@@ -37,11 +54,35 @@ function docReady(){
 	//popover
 	$('[rel="popover"],[data-rel="popover"],[data-toggle="popover"]').popover();
 
-	//uploadify - multiple uploads
-	$('#file_upload').uploadify({
-		'swf'      : 'uploadify.swf',
-		'uploader' : '/',
-		'buttonText':'选择文件'
-		// Put your options here
-	});
+	// 导入excel、图片
+    $('.uploadify').each(function(i,e){
+    	$(e).attr("id","uploadify_"+i).uploadify({
+    		'fileObjName':$(e).attr('name'),
+    		'formData':$(e).closest('form').serializeJson(),
+    		'buttonText':'导入',
+    		'width':53,
+    		'height':30,
+			'swf'      : $.appCtx + '/static/swf/uploadify.swf',
+			'uploader' : $(e).closest('form').attr('action'),
+			'onUploadSuccess':function(file,data,response){
+				var form = $(this.button[0]).closest('form');
+				if(form.is(".import-excel")){
+					location.reload();
+					return;
+				}
+				if(form.is(".import-img")){
+					data = $.parseJSON(data);
+					form.parent().next().find('img').attr('src',data.result);
+					form.remove();
+				}
+			},
+			'onUploadStart':function(file){
+				$(this.button[0]).attr('disabled',true).text('0%');
+			},
+			'onUploadProgress':function(file,bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal){
+				$(this.button[0]).attr('disabled',true).text(Math.round((bytesUploaded/bytesTotal) * 100)+'%');
+			}
+			// Put your options here
+		});
+    });
 }
