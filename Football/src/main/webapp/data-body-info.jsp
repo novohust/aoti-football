@@ -17,125 +17,159 @@ float: left;
 margin-bottom: 20px;}
         .pic-colomn-1{padding-right:30px;}
         .pic-colomn-2{padding-left:30px;}
-        .pic-title{margin:0;}
+        .pic-title{margin:0;min-height:40px;}
         .upload-form{display: inline-block;margin-bottom:10px;margin-left:10px;}
         .thumbnail{height:300px;}
         h4{margin-bottom:20px;}
         .title-tip{font-size:12px;color:#bbb;margin-top: -14px;}
         .speed-chart{height: 200px;margin-bottom: 10px;}
+        .thumbnail > img{width:100%;height:100%;}
     </style>
   </head>
 
   <body>
   <a style="display:none" href="${ctx}" id="app-ctx"></a>
+  <c:set var="nullTip" value="<em class='no-data-tip'>未上传</em>" scope="page"></c:set>
+  <c:set var="entity" value="BodyInfo"></c:set>
+
   <div id="data-table">
-          <form action="" class="upload-form">
-          	<input id="u_1" type="file" name="excel" class="uploadify"/>
-          	<input type="hidden" name="entity" value="BodyInfo"/>
-          	<input type="hidden" name="attr" value="BodyInfo"/>
+  		<c:if test="${info eq null || info.totalDistance eq null}" >
+          <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
+          	<input type="file" name="excel" class="uploadify"/>
+          	<input type="hidden" name="entity" value="${entity}"/>
+          	<input type="hidden" name="playerId" value="${playerId}"/>
+          	<input type="hidden" name="period" value="${period}"/>
+          	<input type="hidden" name="date" value="${date}"/>
+
+          	<input type='hidden' name='attr' value='totalDistance'/>
+			<input type='hidden' name='attr' value='totalDistanceF'/>
+			<input type='hidden' name='attr' value='totalDistanceS'/>
+			<input type='hidden' name='attr' value='standDistance'/>
+			<input type='hidden' name='attr' value='standDistanceF'/>
+			<input type='hidden' name='attr' value='standDistanceS'/>
+			<input type='hidden' name='attr' value='walkDistance'/>
+			<input type='hidden' name='attr' value='walkDistanceF'/>
+			<input type='hidden' name='attr' value='walkDistanceS'/>
+			<input type='hidden' name='attr' value='slowRunDistance'/>
+			<input type='hidden' name='attr' value='slowRunDistanceF'/>
+			<input type='hidden' name='attr' value='slowRunDistanceS'/>
+			<input type='hidden' name='attr' value='runDistanceAndTimes'/>
+			<input type='hidden' name='attr' value='runDistanceAndTimesF'/>
+			<input type='hidden' name='attr' value='runDistanceAndTimesS'/>
+			<input type='hidden' name='attr' value='highSpeedRunDistanceAndTimes'/>
+			<input type='hidden' name='attr' value='highSpeedRunDistanceAndTimesF'/>
+			<input type='hidden' name='attr' value='highSpeedRunDistanceAndTimesS'/>
+			<input type='hidden' name='attr' value='spurtDistanceAndTimes'/>
+			<input type='hidden' name='attr' value='spurtDistanceAndTimesF'/>
+			<input type='hidden' name='attr' value='spurtDistanceAndTimesS'/>
+			<input type='hidden' name='attr' value='passTimes'/>
+			<input type='hidden' name='attr' value='battleTimes'/>
+			<input type='hidden' name='attr' value='inTime'/>
+			<input type='hidden' name='attr' value='avgSpeed'/>
           </form>
+          </c:if>
           <table class="table  table-striped">
               <tbody>
               <tr>
                 <td video-type>总距离</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.totalDistance eq null ? nullTip : info.totalDistance}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.totalDistanceF eq null ? nullTip : info.totalDistanceF}</td>
 
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.totalDistanceS eq null ? nullTip : info.totalDistanceS}</td>
               </tr>
               <tr>
                 <td video-type>站立距离</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.standDistance eq null ? nullTip : info.standDistance}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.standDistanceF eq null ? nullTip : info.standDistanceF}</td>
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.standDistanceS eq null ? nullTip : info.standDistanceS}</td>
               </tr>
               <tr>
                 <td video-type>步行距离</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.walkDistance eq null ? nullTip : info.walkDistance}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.walkDistanceF eq null ? nullTip : info.walkDistanceF}</td>
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.walkDistanceS eq null ? nullTip : info.walkDistanceS}</td>
               </tr>
               <tr>
                 <td video-type>慢跑距离</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.slowRunDistance eq null ? nullTip : info.slowRunDistance}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.slowRunDistanceF eq null ? nullTip : info.slowRunDistanceF}</td>
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.slowRunDistanceS eq null ? nullTip : info.slowRunDistanceS}</td>
               </tr>
               <tr>
                 <td video-type>奔跑距离/次数</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.runDistanceAndTimes eq null ? nullTip : info.runDistanceAndTimes}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.runDistanceAndTimesF eq null ? nullTip : info.runDistanceAndTimesF}</td>
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.runDistanceAndTimesS eq null ? nullTip : info.runDistanceAndTimesS}</td>
               </tr>
               <tr>
                 <td video-type>高速奔跑距离/次数</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.highSpeedRunDistanceAndTimes eq null ? nullTip : info.highSpeedRunDistanceAndTimes}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.highSpeedRunDistanceAndTimesF eq null ? nullTip : info.highSpeedRunDistanceAndTimesF}</td>
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.highSpeedRunDistanceAndTimesS eq null ? nullTip : info.highSpeedRunDistanceAndTimesS}</td>
               </tr>
               <tr>
                 <td video-type>冲刺距离/次数</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.spurtDistanceAndTimes eq null ? nullTip : info.spurtDistanceAndTimes}</td>
               </tr>
               <tr>
                 <td video-type>上半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.spurtDistanceAndTimesF eq null ? nullTip : info.spurtDistanceAndTimesF}</td>
               </tr>
               <tr>
                 <td video-type>下半场</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.spurtDistanceAndTimesS eq null ? nullTip : info.spurtDistanceAndTimesS}</td>
               </tr>
               <tr>
                 <td video-type>传球/准确次数</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.passTimes eq null ? nullTip : info.passTimes}</td>
               </tr>
               <tr>
                 <td video-type>对决/成功次数</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.battleTimes eq null ? nullTip : info.battleTimes}</td>
               </tr>
                 <tr>
                 <td video-type>上场时间</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.inTime eq null ? nullTip : info.inTime}</td>
               </tr>
                 <tr>
                 <td video-type>平均速度</td>
-                <td><em class="no-data-tip">未上传</em></td>
+                <td>${info eq null || info.avgSpeed eq null ? nullTip : info.avgSpeed}</td>
               </tr>
               </tbody>
           </table>
@@ -144,15 +178,37 @@ margin-bottom: 20px;}
   <div id="pic-area">
     <h4 class="center">在比赛中球员的运动</h4>
     <div class="pic-colomn-1">
-        <h5 class="pic-title">上半场<form action="" class="upload-form"><button class="btn">导入</button></form></h5>
+        <h5 class="pic-title">上半场
+        	<c:if test="${info eq null || info.moveImgF eq null}" >
+        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
+        		<input type="file" name="img" class="uploadify"/>
+	          	<input type="hidden" name="entity" value="${entity}"/>
+	          	<input type="hidden" name="playerId" value="${playerId}"/>
+	          	<input type="hidden" name="period" value="${period}"/>
+	          	<input type="hidden" name="date" value="${date}"/>
+	          	<input type='hidden' name='attr' value='moveImgF'/>
+        	</form>
+        	</c:if>
+        </h5>
         <div class="thumbnail">
-                <img src="http://www.placehold.it/310x310/EFEFEF/AAAAAA&text=no+image" alt="">
+                <img src="${ctx}${(info eq null || info.moveImgF eq null) ? '/static/img/placeholder_1.gif' : info.moveImgF}">
         </div>
     </div>
     <div class="pic-colomn-2">
-        <h5 class="pic-title">下半场<form action="" class="upload-form"><button class="btn">导入</button></form></h5>
+        <h5 class="pic-title">下半场
+       		<c:if test="${info eq null || info.moveImgS eq null}" >
+        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
+        		<input type="file" name="img" class="uploadify"/>
+	          	<input type="hidden" name="entity" value="${entity}"/>
+	          	<input type="hidden" name="playerId" value="${playerId}"/>
+	          	<input type="hidden" name="period" value="${period}"/>
+	          	<input type="hidden" name="date" value="${date}"/>
+	          	<input type='hidden' name='attr' value='moveImgS'/>
+        	</form>
+        	</c:if>
+        </h5>
         <div class="thumbnail">
-                <img src="http://www.placehold.it/310x310/EFEFEF/AAAAAA&text=no+image" alt="">
+               <img src="${ctx}${(info eq null || info.moveImgS eq null) ? '/static/img/placeholder_1.gif' : info.moveImgS}">
         </div>
     </div>
 
@@ -160,15 +216,37 @@ margin-bottom: 20px;}
 
     <h4 class="center">在比赛中球员的高速运动和冲刺</h4>
     <div class="pic-colomn-1">
-        <h5 class="pic-title">上半场<form action="" class="upload-form"><button class="btn">导入</button></form></h5>
+        <h5 class="pic-title">上半场
+        	<c:if test="${info eq null || info.spurtImgF eq null}" >
+        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
+        		<input type="file" name="img" class="uploadify"/>
+	          	<input type="hidden" name="entity" value="${entity}"/>
+	          	<input type="hidden" name="playerId" value="${playerId}"/>
+	          	<input type="hidden" name="period" value="${period}"/>
+	          	<input type="hidden" name="date" value="${date}"/>
+	          	<input type='hidden' name='attr' value='spurtImgF'/>
+        	</form>
+        	</c:if>
+        </h5>
         <div class="thumbnail">
-                <img src="http://www.placehold.it/310x310/EFEFEF/AAAAAA&text=no+image" alt="">
+               <img src="${ctx}${(info eq null || info.spurtImgF eq null) ? '/static/img/placeholder_1.gif' : info.spurtImgF}">
         </div>
     </div>
     <div class="pic-colomn-2">
-        <h5 class="pic-title">下半场<form action="" class="upload-form"><button class="btn">导入</button></form></h5>
+        <h5 class="pic-title">下半场
+        	<c:if test="${info eq null || info.spurtImgS eq null}" >
+			<form action="${ctx}/data/player/import-img" class="upload-form import-img">
+        		<input type="file" name="img" class="uploadify"/>
+	          	<input type="hidden" name="entity" value="${entity}"/>
+	          	<input type="hidden" name="playerId" value="${playerId}"/>
+	          	<input type="hidden" name="period" value="${period}"/>
+	          	<input type="hidden" name="date" value="${date}"/>
+	          	<input type='hidden' name='attr' value='spurtImgS'/>
+        	</form>
+        	</c:if>
+		</h5>
         <div class="thumbnail">
-                <img src="http://www.placehold.it/310x310/EFEFEF/AAAAAA&text=no+image" alt="">
+               <img src="${ctx}${(info eq null || info.spurtImgS eq null) ? '/static/img/placeholder_1.gif' : info.spurtImgS}">
         </div>
     </div>
 
@@ -258,19 +336,6 @@ margin-bottom: 20px;}
                 data: [7.0, 5.3, 2.1, 7.9, 9.1, 4.3, 4.5, 5.6, 8.0, 2.1]
             }]
         });
-
-
-    	// 导入excel
-	    $('.uploadify').each(function(i,e){
-	    	$(e).uploadify({
-	    		'buttonText':'导入',
-	    		'width':53,
-	    		'height':30,
-				'swf'      : $.appCtx + '/static/swf/uploadify.swf',
-				'uploader' : ''
-				// Put your options here
-			});
-	    });
       });
     </script>
   </body>
