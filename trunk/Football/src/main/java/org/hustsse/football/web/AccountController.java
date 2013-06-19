@@ -17,10 +17,15 @@ public class AccountController {
 	@RequestMapping(value = "/login")
 	@ResponseBody
 	public AjaxResult validateAccount(Account account){
-		accountService.validateAccount(account);
-		return null;
+
+		if( ! (accountService.validateAccount(account)))
+		{
+			return new AjaxResult(account,"wrong");
+		}
+		else
+		{
+			return new AjaxResult(account);
+		}
 
 	}
-
-
 }
