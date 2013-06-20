@@ -63,9 +63,11 @@
 
         <div class="user-info pull-right">
               <span class="user-name">
-                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>
+                  <i class="icon-user"></i><label for="">欢迎回来!<strong><c:out value="${sessionScope.ACCOUNT.username}"/></strong></label>
               </span>
-              <a href="">退出</a>
+              <c:if  test="${sessionScope.ACCOUNT != null}">
+              	<a href="${ctx}/logout">退出</a>
+              </c:if>
             </div>
         <h3 class="muted">中国足球数据服务中心
               <ul class="breadcrumb">
@@ -157,7 +159,7 @@
         <h3 id="myModalLabel" >登录</h3>
       </div>
       <div class="modal-body logindialog">
-      <form  id="login-form" action="${ctx}/account/login" method="post">
+      <form  id="login-form" action="${ctx}/login" method="post">
          <fieldset>
          <div class="error">
          <font color="red"><p id="msg"> </p></font>
@@ -184,7 +186,15 @@
         $("#loginModal").modal();
       }
       function postLogin(){
-    	  checklogin();
+    	  var account = $("#account").val();
+
+    	  if(account != null)
+    	  {
+    		  location.href ="players-index.jsp";
+    	  }else
+    	  {
+    	  	checklogin();
+    	  	}
       }
 
       //检查账号密码为空
@@ -208,6 +218,7 @@
 			resetForm:true,
 			beforeSubmit:function(){},
 			success:function(data){
+				 var account = $("#account").val();
 				var messsage  = eval(data).errorMsg;
 				if(messsage == "wrong")
 				{
