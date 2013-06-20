@@ -50,6 +50,16 @@
 	<!-- 首页-->
 	 <view-controller path="/" view-name="index" />
 
+	<!--拦截器 <mapping path="/*" /> -->
+	<interceptors>
+        <interceptor>
+            <mapping path="/data/*" />
+            <mapping path="/viedo/*" />
+            <mapping path="/player/*" />
+            <beans:bean class="org.hustsse.football.utils.SessionInterceptor" />
+        </interceptor>
+    </interceptors>
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp  -->
 	<beans:bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
