@@ -20,9 +20,11 @@
 
         <div class="user-info pull-right">
               <span class="user-name">
-                  <i class="icon-user"></i><label for="">欢迎回来，<strong>admin</strong></label>
+                  <i class="icon-user"></i><label for="">欢迎回来!<strong><c:out value="${sessionScope.ACCOUNT.username}"/></strong></label>
               </span>
-              <a href="">退出</a>
+              <c:if  test="${sessionScope.ACCOUNT != null}">
+              <a href="${ctx}/logout">退出</a>
+              </c:if>
             </div>
         <h3 class="muted">中国足球数据服务中心
               <ul class="breadcrumb">
@@ -39,7 +41,7 @@
         <ul class="nav nav-pills">
             <li><span>李四</span></li>
             <li><a href="#"
-              data-toggle="popover" data-content='<a href="player-intro.html">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="data-player.html">数据</a>'
+              data-toggle="popover" data-content='<a href="${ctx}/player/introduction">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/player/data">数据</a>'
               data-html="true"
               data-placement="top"
               style="font-weight:bold;">张猛</a></li>
