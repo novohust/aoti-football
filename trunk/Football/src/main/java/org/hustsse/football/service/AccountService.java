@@ -25,6 +25,6 @@ public class AccountService {
 	//验证账户信息
 	public Boolean validateAccount(Account account){
 		////sdfsdf
-		return false;
+		return true;
 	}
 }
