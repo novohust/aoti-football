@@ -24,6 +24,10 @@ $.fn.serializeJson=function(){
 function docReady(){
 	$.extend({"appCtx":$("#app-ctx").attr('href')});
 
+	//art template
+	template.openTag = '<@';
+	template.closeTag = '@>';
+
 	//prevent # links from moving to top
 	$('a[href="#"][data-top!=true]').click(function(e){
 		e.preventDefault();
@@ -56,6 +60,10 @@ function docReady(){
 
 	// 导入excel、图片
     $('.uploadify').each(function(i,e){
+    	var form = $(e).closest('form');
+    	if(!form.is('.import-excel') && !form.is('.import-img')){
+    		return;
+    	}
     	$(e).attr("id","uploadify_"+i).uploadify({
     		'fileObjName':$(e).attr('name'),
     		'formData':$(e).closest('form').serializeJson(),

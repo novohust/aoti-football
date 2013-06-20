@@ -8,6 +8,8 @@
 <script src="${ctx}/static/js/jquery.uploadify-3.1.min.js"></script>
 <script src="${ctx}/static/js/highcharts.js"></script>
 <script src="${ctx}/static/js/bootstrap.min.js"></script>
+<script src="${ctx}/static/js/bootstrap-inputmask.min.js"></script>
 <script src="${ctx}/static/js/jwplayer.js"></script>
 <script src="${ctx}/static/js/jwplayer.html5.js"></script>
+<script src="${ctx}/static/js/artTemplate.min.js"></script>
 <script src="${ctx}/static/js/app.js"></script>
