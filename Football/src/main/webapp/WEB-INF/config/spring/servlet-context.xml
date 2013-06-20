@@ -54,7 +54,7 @@
 	<interceptors>
         <interceptor>
             <mapping path="/data/*" />
-            <mapping path="/viedo/*" />
+            <mapping path="/video/*" />
             <mapping path="/player/*" />
             <beans:bean class="org.hustsse.football.utils.SessionInterceptor" />
         </interceptor>
@@ -69,8 +69,8 @@
 
 	<beans:bean id="multipartResolver"
 	  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	  <!-- 以字节为单位的最大上传文件的大小  20M -->
-	   <beans:property name="maxUploadSize" value="20971520" />
+	  <!-- 以字节为单位的最大上传文件的大小  500M -->
+	   <beans:property name="maxUploadSize" value="524288000" />
 	</beans:bean>
 
 	<beans:bean

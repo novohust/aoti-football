@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <div class="masthead">
-
+<a style="display:none" href="${ctx}" id="app-ctx"></a>
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">数据</a></li>
           <li><a href="#">视频</a></li>
