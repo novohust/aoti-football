@@ -33,9 +33,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * 运动员数据页：
+ * 1. 数据首页
+ * 2. 体能
+ * 3. 技战术
+ * 4. 设备采集
+ * @author Anderson
+ *
+ */
 @Controller
 @RequestMapping(value = "/data/player")
-public class DataController {
+public class DataPlayerController {
 
 	/*
 	 * 表单提交日期绑定
@@ -53,6 +62,16 @@ public class DataController {
 	SkillsService skillsService;
 	@Autowired
 	PlayerService playerService;
+
+	/**
+	 * 数据查看首页
+	 * @param playerId
+	 * @return
+	 */
+	@RequestMapping(value = "/index")
+	public String index(@ModelAttribute("playerId") Long playerId) {
+		return "data-player";
+	}
 
 	/**
 	 * 查看某个球员的体能信息

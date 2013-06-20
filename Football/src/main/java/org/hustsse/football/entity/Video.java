@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hustsse.football.enums.PeriodEnum;
+import org.hustsse.football.enums.VideoTypeEnum;
 
 /**
  * 视频
@@ -30,7 +31,7 @@ public class Video extends IdEntity {
 
 	//视频信息
 	private String videoPath;//视频路径
-	private String videoType;//视频类型（射门，头球，点球etc）
+	private VideoTypeEnum videoType;//视频类型（射门，头球，点球etc）
 	private String videoDesc;//视频描述
 
 	//上传信息
@@ -56,11 +57,13 @@ public class Video extends IdEntity {
 		this.videoPath = videoPath;
 	}
 
-	public String getVideoType() {
+
+	@Enumerated(EnumType.STRING)
+	public VideoTypeEnum getVideoType() {
 		return videoType;
 	}
 
-	public void setVideoType(String videoType) {
+	public void setVideoType(VideoTypeEnum videoType) {
 		this.videoType = videoType;
 	}
 

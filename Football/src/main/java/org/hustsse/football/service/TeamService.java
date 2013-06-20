@@ -1,6 +1,9 @@
 package org.hustsse.football.service;
 
+import java.util.List;
+
 import org.hustsse.football.dao.TeamDao;
+import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +23,9 @@ public class TeamService {
 
 	public Team findById(Long id) {
 		return teamDao.findUniqueBy("id", id);
+	}
+
+	public List<Player> findTeamPlayers(Long teamId) {
+		return teamDao.find("from Player p where p.team.id = ?", teamId);
 	}
 }
