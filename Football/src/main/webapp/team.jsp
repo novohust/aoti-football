@@ -66,7 +66,7 @@
                   <i class="icon-user"></i><label for="">欢迎回来!<strong><c:out value="${sessionScope.ACCOUNT.username}"/></strong></label>
               </span>
               <c:if  test="${sessionScope.ACCOUNT != null}">
-              	<a href="${ctx}/logout">退出</a>
+              	<a id="logflag" href="${ctx}/logout">退出</a>
               </c:if>
             </div>
         <h3 class="muted">中国足球数据服务中心
@@ -81,32 +81,32 @@
       <!-- start 俱乐部球队列表-->
       <ul  >
         <li class="team">
-            <a href="#loginModal" role="button" class="btn" data-toggle="modal">
+            <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
             <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
             <span display:="" block="" style=" display: block;">武汉卓尔</span>
           </a>
 
         </li>
         <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
+          <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
             <img height="50"  src="${ctx}/upload/images/2.png" alt="武汉卓尔">
             <span display:="" block="" style=" display: block;">上海申鑫</span>
             </a>
         </li >
         <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
+          <a href="javascript:" onclick="teamClick();"" role="button" class="btn" data-toggle="modal">
             <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
             <span display:="" block="" style=" display: block;">大连实德</span>
             </a>
         </li>
         <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
+          <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
             <img height="50"  src="${ctx}/upload/images/2.png" alt="武汉卓尔">
             <span display:="" block="" style=" display: block;">武汉卓尔</span>
             </a>
         </li>
          <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
+          <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
             <img height="50"  src="${ctx}/upload/images/3.png" alt="武汉卓尔">
             <span display:="" block="" style=" display: block;">武汉卓尔</span>
             </a>
@@ -183,22 +183,20 @@
 
     <script type="text/javascript">
       function teamClick(){
-        $("#loginModal").modal();
+    	  var logflag = document.getElementById("logflag");
+    	    if (logflag == null)
+        	{
+    		  $("#loginModal").modal();
+        	}
+    	  	else
+        	{
+        		location.href ="players-index.jsp";
+        	}
       }
-      function postLogin(){
-    	  var account = $("#account").val();
 
-    	  if(account != null)
-    	  {
-    		  location.href ="players-index.jsp";
-    	  }else
-    	  {
-    	  	checklogin();
-    	  	}
-      }
 
       //检查账号密码为空
-      function checklogin(){
+      function postLogin(){
     	  var uname = document.getElementById('username');
     	  var pwd   = document.getElementById('password');
     	  var msg   = document.getElementById('msg');
@@ -218,7 +216,6 @@
 			resetForm:true,
 			beforeSubmit:function(){},
 			success:function(data){
-				 var account = $("#account").val();
 				var messsage  = eval(data).errorMsg;
 				if(messsage == "wrong")
 				{
@@ -231,7 +228,6 @@
 			}
 			});
     	  }
-
       }
 
     </script>
