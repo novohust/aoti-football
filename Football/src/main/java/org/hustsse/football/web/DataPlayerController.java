@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -18,6 +19,7 @@ import org.hustsse.football.enums.PeriodEnum;
 import org.hustsse.football.service.BodyInfoService;
 import org.hustsse.football.service.PlayerService;
 import org.hustsse.football.service.SkillsService;
+import org.hustsse.football.service.TeamService;
 import org.hustsse.football.utils.ReflectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -62,6 +64,8 @@ public class DataPlayerController {
 	SkillsService skillsService;
 	@Autowired
 	PlayerService playerService;
+	@Autowired
+	TeamService teamService;
 
 	/**
 	 * 数据查看首页
@@ -181,5 +185,20 @@ public class DataPlayerController {
 		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
 		return "data-skills";
 	}
+
+
+	/**
+	 * 获取球队的队员信息
+	 *
+	 *
+	 */
+	@RequestMapping(value = "/getTeam")
+	public String getTeamPlayers(@ModelAttribute("teamId")Long teamId,ModelMap map){
+		List<Player>  playerlist = teamService.findTeamPlayers(teamId);
+		map.put("playersMap", playerlist);
+		return "players-index";
+
+	}
+
 
 }
