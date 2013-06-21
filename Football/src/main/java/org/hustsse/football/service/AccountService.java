@@ -1,5 +1,7 @@
 package org.hustsse.football.service;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.hustsse.football.dao.AccountDao;
 import org.hustsse.football.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,16 @@ public class AccountService {
 	//验证账户信息
 	public Boolean validateAccount(Account account){
 		////sdfsdf
-		return true;
+		Criteria c = accountDao.createCriteria(Restrictions.eq("account.username", account.getUsername()),
+				Restrictions.eq("account.password", account.getPassword()));
+		account = accountDao.findUnique(c);
+		if(account != null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
