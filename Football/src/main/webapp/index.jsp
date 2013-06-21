@@ -34,7 +34,7 @@
 </head>
 
 
-  <body>
+  <body onload="load()">
 
     <div class="container">
     	<%@ include file="/common/head-inner.jsp"%>
@@ -46,7 +46,11 @@
       <div class="club-wrapper"><a href="#" class="club">省级运动队</a></div>
       <div class="club-wrapper"><a href="#" class="club">市级运动队</a></div>
 
-
+      <c:if test="${!empty clubMap}">
+		<c:forEach items="${clubMap}" var="item">
+		  <div class="club-wrapper"><a href="${ctx}/club?club.id="+${item.value.id}  class="club">${item.value.name}</a></div>
+		</c:forEach>
+	  </c:if>
 
     </div> <!-- /container -->
 
