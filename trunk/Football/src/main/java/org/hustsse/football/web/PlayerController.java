@@ -26,7 +26,7 @@ public class PlayerController {
 	}
 
 	@RequestMapping(value="/data")
-	public String Logout(Account account){
+	public String getPlayeDataTabs(Account account){
 		return "player_intro";
 	}
 }
