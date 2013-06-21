@@ -41,6 +41,11 @@
          list-style: none;
       }
 
+    .team-wrapper{
+        margin: 0;
+        width: 25%;
+        float: left;
+      }
       .team{
         padding: 0;
         margin: 0;
@@ -63,7 +68,15 @@
 
         <div class="user-info pull-right">
               <span class="user-name">
-                  <i class="icon-user"></i><label for="">欢迎回来!<strong><c:out value="${sessionScope.ACCOUNT.username}"/></strong></label>
+                  <i class="icon-user"></i>
+                  <label for="">欢迎回来!<strong>
+                    <c:if test="${sessionScope.ACCOUNT.role == 'Player'}">
+                  	 	<c:out value="${sessionScope.PLAYER.name}"/>
+                  	</c:if>
+                  	<c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
+                  	 	<c:out value="${sessionScope.COACH.name}"/>
+                  	</c:if>
+                  </strong></label>
               </span>
               <c:if  test="${sessionScope.ACCOUNT != null}">
               	<a id="logflag" href="${ctx}/logout">退出</a>
@@ -79,72 +92,27 @@
       <hr>
 
       <!-- start 俱乐部球队列表-->
+
+       <c:if test="${!empty teamMap}">
+		<c:forEach items="${teamMap}" var="item">
+		  <div class="team-wrapper team">
+		       <a href="javascript:" onclick="teamClick(${item.id});" role="button" class="btn" data-toggle="modal">
+		       	<img height="50"  src="${ctx}/upload/images/1.png" alt=${item.name}>
+		       	<span display:="" block="" style=" display: block;">${item.name}</span>
+		       </a>
+		  </div>
+		</c:forEach>
+	  </c:if>
+
       <ul  >
         <li class="team">
             <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
             <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
+            <span display:="" block="" style=" display: block;">武汉卓尔--测试用勿删</span>
           </a>
-
-        </li>
-        <li class="team">
-          <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/2.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">上海申鑫</span>
-            </a>
-        </li >
-        <li class="team">
-          <a href="javascript:" onclick="teamClick();"" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">大连实德</span>
-            </a>
-        </li>
-        <li class="team">
-          <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/2.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
-        </li>
-         <li class="team">
-          <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/3.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
-        </li>
-        </ul>
-       <ul >
-        <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
         </li>
 
-        <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
-            <img height="50" src="${ctx}/upload/images/2.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
-        </li>
-        <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/3.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
-        </li>
-         <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/2.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
-        </li>
-         <li class="team">
-          <a href="#loginModal" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔</span>
-            </a>
-        </li>
-      </ul>
+    </ul>
 
        <!--end俱乐部球队列表 -->
 
@@ -182,7 +150,8 @@
    <%@ include file="/common/import-js.jsp"%>
 
     <script type="text/javascript">
-      function teamClick(){
+      function teamClick(teamId){
+
     	  var logflag = document.getElementById("logflag");
     	    if (logflag == null)
         	{
@@ -190,10 +159,9 @@
         	}
     	  	else
         	{
-        		location.href ="players-index.jsp";
+        		location.href ="${ctx}/data/player/getTeam?teamId="+teamId;
         	}
       }
-
 
       //检查账号密码为空
       function postLogin(){
@@ -223,7 +191,7 @@
 					 uname.focus();
 				}else
 				{
-					location.href ="players-index.jsp";
+					location.href ="${ctx}/data/player/getTeam?teamId=1";
 				}
 			}
 			});
