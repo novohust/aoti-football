@@ -25,18 +25,11 @@ public class AccountService {
 	}
 
 	//验证账户信息
-	public Boolean validateAccount(Account account){
+	public Account validateAccount(Account account){
 		////sdfsdf
-		Criteria c = accountDao.createCriteria(Restrictions.eq("account.username", account.getUsername()),
-				Restrictions.eq("account.password", account.getPassword()));
-		account = accountDao.findUnique(c);
-		if(account != null)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		Criteria c = accountDao.createCriteria(Restrictions.eq("username", account.getUsername()),
+				Restrictions.eq("password", account.getPassword()));
+		Account ac = accountDao.findUnique(c);
+		return ac;
 	}
 }
