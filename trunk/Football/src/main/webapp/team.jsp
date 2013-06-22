@@ -33,24 +33,25 @@
       }
 
       .login{
-        width: 300px;
-        height: 300px;
-
+        width: 248px;
+        margin-left: -124px;
       }
       .logindialog{
          list-style: none;
       }
 
     .team-wrapper{
-        margin: 0;
-        width: 25%;
         float: left;
       }
       .team{
         padding: 0;
-        margin: 0;
+        margin: 10px 15px;
         list-style: none;
         display:inline;
+      }
+      .team img{
+      	width:85px;
+      	height:85px;
       }
     </style>
   </head>
@@ -66,7 +67,7 @@
 		<c:forEach items="${teamMap}" var="item">
 		  <div class="team-wrapper team">
 		       <a href="javascript:" onclick="teamClick(${item.id});" role="button" class="btn" data-toggle="modal">
-		       	<img height="50"  src="${ctx}/upload/images/1.png" alt=${item.name}>
+		       	<img  src="${ctx}${item.flagpath}" alt=${item.name}>
 		       	<span display:="" block="" style=" display: block;">${item.name}</span>
 		       </a>
 		  </div>
@@ -88,18 +89,17 @@
       <form  id="login-form" action="${ctx}/login" method="post">
          <fieldset>
          <div class="error">
-         <font color="red"><p id="msg"> </p></font>
+         <font color="red"><p id="msg" class="alert alert-error" style="display:none"> </p></font>
          </div>
          <li >登录名：</li>
          <input id="username" name="username" type="text"/>
          <li>登录密码：</li>
-         <input id="password" name="password" type="password" />
+         <input id="password" name="password" type="password" style="margin-bottom:0;"/>
          <li><font color="red"><span id="msg"></span><font><li>
       </fieldset>
       </form>
       </div>
       <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
         <button class="btn btn-primary" onclick="postLogin();">登录</button>
       </div>
     </div>
@@ -132,13 +132,16 @@
     	  if((uname.value.length == 0) || (uname.value == null))
     	  {
 			 msg.innerHTML="登录名不能为空"
+			 $(msg).show();
     		 uname.focus();
     	  }
     	  else if((pwd.value.length == 0) || (pwd.value == null))
     	  {
 			 msg.innerHTML="登录密码不能为空"
+			 $(msg).show();
     		 pwd.focus();
     	  }else {
+    		$(msg).hide();
 			$('#login-form').ajaxSubmit({
 			resetForm:true,
 			beforeSubmit:function(){},
