@@ -26,7 +26,7 @@
               <ul class="breadcrumb">
                  <c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
                 	<li>
-                	<a href="${ctx}/index.jsp">
+                	<a href="${ctx}//data/player/getTeam?teamId=${sessionScope.COACH.team.id}">
                 	    <c:if test="${!empty sessionScope.COACH.team  }">
                 	 	  <c:out value="${sessionScope.COACH.team.name}" />
                 	    </c:if>
@@ -35,7 +35,7 @@
 				</c:if>
                 <c:if test="${sessionScope.ACCOUNT.role == 'Player'}">
                 	<li>
-                	<a href="${ctx}/index.jsp">
+                	<a href="${ctx}//data/player/getTeam?teamId=${sessionScope.PLAYER.team.id}">
                 	   <c:if test="${!empty sessionScope.PLAYER.team }">
                 	 	 <c:out value="${sessionScope.PLAYER.team.name}"/>
                 	   </c:if>
