@@ -35,4 +35,9 @@ public class CoachService {
 		else
 			return null;
 	}
+
+	public List<Coach> findCoachesByTeamId(Long teamId){
+		List<Coach> coachlist = coachDao.find("from Coach p where p.team.id = ?",teamId);
+		return coachlist;
+	}
 }
