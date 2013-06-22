@@ -53,7 +53,7 @@
 	<!--拦截器 <mapping path="/*" /> -->
 	<interceptors>
         <interceptor>
-            <mapping path="/data/*" />
+            <mapping path="/data/player/*" />
             <mapping path="/video/*" />
             <mapping path="/player/*" />
             <beans:bean class="org.hustsse.football.utils.SessionInterceptor" />
