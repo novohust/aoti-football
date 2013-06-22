@@ -11,8 +11,7 @@
      <script type="text/javascript">
      	function load(){
      		//var context = ${ctx}/init;
-     		location.href = "init";
-     	}
+     		location.href = "init";     	}
      </script>
   </body>
 </html>
