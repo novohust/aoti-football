@@ -214,8 +214,25 @@ public class DataPlayerController {
 		map.put("playersMap", playerlist);
 		map.put("coachesMap", coachlist);
 		return "players-index";
-
 	}
 
 
+	/**
+	 * 教练获取比赛汇总信息-可链接到视频
+	 *
+	 */
+	@RequestMapping(value="/getCompetetion")
+	public String getCompetetion(@ModelAttribute("teamId")Long teamId,ModelMap map){
+		return "coach-data-competetion";
+	}
+
+
+	/**
+	 * 教练获取球队或者个人的技术统计 纯displayer(默认获取球队最近的比赛的技术统计)
+	 *
+	 */
+	@RequestMapping(value="/getCompetetionPlayer")
+	public String getCompetetionPlayer(@ModelAttribute("teamId")Long teamId,ModelMap map){
+		return "coach-data-team-member";
+	}
 }
