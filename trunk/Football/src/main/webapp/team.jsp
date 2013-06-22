@@ -62,7 +62,6 @@
      <%@ include file="/common/header.jsp"%>
 
       <!-- start 俱乐部球队列表-->
-
        <c:if test="${!empty teamMap}">
 		<c:forEach items="${teamMap}" var="item">
 		  <div class="team-wrapper team">
@@ -73,17 +72,6 @@
 		  </div>
 		</c:forEach>
 	  </c:if>
-
-      <ul  >
-        <li class="team">
-            <a href="javascript:" onclick="teamClick();" role="button" class="btn" data-toggle="modal">
-            <img height="50"  src="${ctx}/upload/images/1.png" alt="武汉卓尔">
-            <span display:="" block="" style=" display: block;">武汉卓尔--测试用勿删</span>
-          </a>
-        </li>
-
-    </ul>
-
        <!--end俱乐部球队列表 -->
 
 

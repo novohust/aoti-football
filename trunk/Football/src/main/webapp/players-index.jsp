@@ -45,13 +45,16 @@
       <h5>教练</h5>
       <div class="shadowed-box">
         <ul class="nav nav-pills">
-            <li class="block"><span>张三&nbsp;&nbsp;&nbsp;主教练&nbsp;&nbsp;&nbsp;现任</span></li>
-            <li class="block"><span>李四&nbsp;&nbsp;&nbsp;主教练&nbsp;&nbsp;&nbsp;10-12赛季</span></li>
-            <li class="block"><span>王五&nbsp;&nbsp;&nbsp;助理教练&nbsp;&nbsp;&nbsp;09年11月--13年02月</span></li>
-          </ul>
+          <li class="block">
+             <c:forEach items="${coachesMap}" var="item">
+            	<span>${item.name}&nbsp;&nbsp;&nbsp;${item.description}&nbsp;&nbsp;&nbsp;
+            	     <fmt:formatDate value="${item.startTime}" pattern="yyyy-MM-dd"/>
+            	     - <fmt:formatDate value="${item.endTime}" pattern="yyyy-MM-dd"/>
+            	    </span>
+            </c:forEach>
+          </li>
+        </ul>
       </div>
-
-
     </div> <!-- /container -->
   </body>
 
