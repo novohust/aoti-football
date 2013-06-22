@@ -2,6 +2,8 @@ package org.hustsse.football.service;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.hustsse.football.dao.PlayerDao;
 import org.hustsse.football.entity.Account;
 import org.hustsse.football.entity.Coach;
@@ -27,6 +29,7 @@ public class PlayerService {
 		return playerDao.findUniqueBy("id", id);
 	}
 
+	//根据登录账户查找其个人（队员）信息
 	public Player findPlayerinfoByAccount(Account account){
 		List<Player> playerlist = playerDao.find("from Player p where p.account.id = ?",account.getId());
 		if(playerlist.size() > 0)
@@ -35,5 +38,10 @@ public class PlayerService {
 		}
 		else
 			return null;
+	}
+
+	public List<Player> findPlayersByTeamId(Long teamId){
+		Criteria c = playerDao.createCriteria(Restrictions.eq("team.id", teamId));
+		return playerDao.find(c);
 	}
 }
