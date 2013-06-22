@@ -59,37 +59,7 @@
 
     <div class="container">
 
-      <div class="masthead">
-
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">数据</a></li>
-          <li><a href="#">视频</a></li>
-        </ul>
-
-        <div class="user-info pull-right">
-              <span class="user-name">
-                  <i class="icon-user"></i>
-                  <label for="">欢迎回来!<strong>
-                    <c:if test="${sessionScope.ACCOUNT.role == 'Player'}">
-                  	 	<c:out value="${sessionScope.PLAYER.name}"/>
-                  	</c:if>
-                  	<c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
-                  	 	<c:out value="${sessionScope.COACH.name}"/>
-                  	</c:if>
-                  </strong></label>
-              </span>
-              <c:if  test="${sessionScope.ACCOUNT != null}">
-              	<a id="logflag" href="${ctx}/logout">退出</a>
-              </c:if>
-            </div>
-        <h3 class="muted">中国足球数据服务中心
-              <ul class="breadcrumb">
-                <li><a href="#">卓尔</a> <span class="divider">/</span></li>
-                <li>张猛 </li>
-              </ul>
-        </h3>
-      </div>
-      <hr>
+     <%@ include file="/common/header.jsp"%>
 
       <!-- start 俱乐部球队列表-->
 
@@ -150,8 +120,9 @@
    <%@ include file="/common/import-js.jsp"%>
 
     <script type="text/javascript">
+      var clickedTeamId;
       function teamClick(teamId){
-
+    	  clickedTeamId = teamId;
     	  var logflag = document.getElementById("logflag");
     	    if (logflag == null)
         	{
@@ -191,7 +162,7 @@
 					 uname.focus();
 				}else
 				{
-					location.href ="${ctx}/data/player/getTeam?teamId=1";
+					location.href ="${ctx}/data/player/getTeam?teamId="+clickedTeamId;
 				}
 			}
 			});
