@@ -1,7 +1,10 @@
 package org.hustsse.football.service;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.hustsse.football.dao.TeamDao;
-import org.hustsse.football.entity.Account;
 import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.Team;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +34,4 @@ public class TeamService {
 	public List<Team> findAllTeamByClubId(Long clubId){
 		return teamDao.find("from Team t where t.club.id = ?",clubId);
 	}
-
 }
