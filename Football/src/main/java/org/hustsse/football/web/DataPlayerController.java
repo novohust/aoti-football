@@ -13,10 +13,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.hustsse.football.entity.BodyInfo;
+import org.hustsse.football.entity.Coach;
 import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.Skills;
 import org.hustsse.football.enums.PeriodEnum;
 import org.hustsse.football.service.BodyInfoService;
+import org.hustsse.football.service.CoachService;
 import org.hustsse.football.service.PlayerService;
 import org.hustsse.football.service.SkillsService;
 import org.hustsse.football.service.TeamService;
@@ -66,6 +68,8 @@ public class DataPlayerController {
 	PlayerService playerService;
 	@Autowired
 	TeamService teamService;
+	@Autowired
+	CoachService coachService;
 
 	/**
 	 * 数据查看首页
@@ -188,14 +192,16 @@ public class DataPlayerController {
 
 
 	/**
-	 * 获取球队的队员信息
+	 * 获取球队的队员信息以及球队的教练洗信息
 	 *
 	 *
 	 */
 	@RequestMapping(value = "/getTeam")
 	public String getTeamPlayers(@ModelAttribute("teamId")Long teamId,ModelMap map){
 		List<Player>  playerlist = playerService.findPlayersByTeamId(teamId);
+		List<Coach>   coachlist  = coachService.findCoachesByTeamId(teamId);
 		map.put("playersMap", playerlist);
+		map.put("coachesMap", coachlist);
 		return "players-index";
 
 	}
