@@ -93,6 +93,5 @@ public class AccountController {
 		List<Team> teamlist = teamService.findAllTeamByClubId(clubId);
 		map.put("teamMap", teamlist);
 		return "team";
-
 	}
 }

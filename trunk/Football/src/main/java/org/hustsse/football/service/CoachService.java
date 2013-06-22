@@ -27,7 +27,7 @@ public class CoachService {
 	}
 
 	public Coach findCoachinfoByAccount(Account account){
-		List<Coach> coachlist = coachDao.find("from Coach p where p.account.id = ?",account.getId());
+		List<Coach> coachlist = coachDao.find("from Coach p join fetch p.team  where p.account.id = ?",account.getId());
 		if(coachlist.size() > 0)
 		{
 			return (Coach) coachlist.get(0);

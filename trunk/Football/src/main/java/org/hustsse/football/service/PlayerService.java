@@ -33,7 +33,7 @@ public class PlayerService {
 
 	//根据登录账户查找其个人（队员）信息
 	public Player findPlayerinfoByAccount(Account account){
-		List<Player> playerlist = playerDao.find("from Player p where p.account.id = ?",account.getId());
+		List<Player> playerlist = playerDao.find("from Player p join fetch p.team  where p.account.id = ?",account.getId());
 
 		if(playerlist.size() > 0)
 		{
