@@ -20,7 +20,7 @@
         		<li>
 	         		<c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
 	          	   		<a href="#"
-	              		data-toggle="popover" data-content='<a href="${ctx}/player/introduction/${item.id}">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/index?playerId=${item.account.id}">数据</a>'
+	              		data-toggle="popover" data-content='<a href="${ctx}/data/player/introduction?playerId=${item.id}">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/index?playerId=${item.account.id}">数据</a>'
 	                    data-html="true"
 	              		data-placement="top"
 	             		style="font-weight:bold;">${item.name}</a>
@@ -31,7 +31,7 @@
 	         			</c:if>
 	         			<c:if test="${sessionScope.ACCOUNT.id == item.account.id}">
 	         				<a href="#"
-	              				data-toggle="popover" data-content='<a href="${ctx}/player/introduction/${item.id}">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/index?playerId=${item.account.id}">数据</a>'
+	              				data-toggle="popover" data-content='<a href="${ctx}/data/player/introduction?playerId=${item.id}">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/index?playerId=${item.account.id}">数据</a>'
 	                    		data-html="true"
 	              				data-placement="top"
 	             				style="font-weight:bold;">${item.name}</a>
