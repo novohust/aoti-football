@@ -45,14 +45,20 @@
       <h5>教练</h5>
       <div class="shadowed-box">
         <ul class="nav nav-pills">
-          <li class="block">
+          <c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
+            <li class="block">
+          		<span><a href="${ctx}/data/player/getCompetetion?teamId=1">比赛统计汇总</a> &nbsp;&nbsp;&nbsp; <a href="${ctx}/data/player/getCompetetionPlayer?teamId=1">球员-球队技术统计</a></span>
+          	</li>
+           </c:if>
              <c:forEach items="${coachesMap}" var="item">
+                <li class="block">
             	<span>${item.name}&nbsp;&nbsp;&nbsp;${item.description}&nbsp;&nbsp;&nbsp;
             	     <fmt:formatDate value="${item.startTime}" pattern="yyyy-MM-dd"/>
-            	     - <fmt:formatDate value="${item.endTime}" pattern="yyyy-MM-dd"/>
+            	     至 <fmt:formatDate value="${item.endTime}" pattern="yyyy-MM-dd"/>
             	    </span>
+            	</li>
             </c:forEach>
-          </li>
+
         </ul>
       </div>
     </div> <!-- /container -->
