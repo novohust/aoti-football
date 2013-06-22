@@ -194,7 +194,7 @@ public class DataPlayerController {
 	 */
 	@RequestMapping(value = "/getTeam")
 	public String getTeamPlayers(@ModelAttribute("teamId")Long teamId,ModelMap map){
-		List<Player>  playerlist = teamService.findTeamPlayers(teamId);
+		List<Player>  playerlist = playerService.findPlayersByTeamId(teamId);
 		map.put("playersMap", playerlist);
 		return "players-index";
 
