@@ -82,6 +82,17 @@ public class DataPlayerController {
 	}
 
 	/**
+	 * 队员信息查看页面
+	 * @param playerId
+	 * @return
+	 */
+	@RequestMapping(value="/introduction")
+	public String getIntro(@ModelAttribute("playerId") Long playerId) {
+		return "player-intro";
+
+	}
+
+	/**
 	 * 查看某个球员的体能信息
 	 *
 	 * @param account
