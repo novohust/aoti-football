@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hustsse.football.entity.Player;
+import org.hustsse.football.entity.Team;
 import org.hustsse.football.entity.Video;
 import org.hustsse.football.enums.PeriodEnum;
 import org.hustsse.football.enums.VideoTypeEnum;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.support.ServletContextResource;
@@ -81,6 +83,28 @@ public class VideoController {
 		return "video-player";
 	}
 
+	@RequestMapping(value = "/watch")
+	public String watch(@RequestParam(required = false) Long playerId, Date date,
+			@ModelAttribute("period") PeriodEnum period, @RequestParam(required = false) Long teamId,
+			@ModelAttribute("type") VideoTypeEnum type,ModelMap map) {
+
+		List<Video> videos = null;
+		// 看球员的视频
+		if(playerId != null) {
+			Player p = playerService.findById(playerId);
+			videos = videoService.findPlayerVideos(playerId, date, period, type);
+			map.put("player", p);
+		}else {
+			// 看球队的视频
+			Team team = teamService.findById(teamId);
+			videos = videoService.findTeamVideos(teamId, date, period, type);
+			map.put("team", team);
+		}
+		map.put("videos", videos);
+		map.put("date",new SimpleDateFormat("yyyy-MM-dd").format(date));
+		return "watch-video";
+	}
+
 	@RequestMapping(value = "/player-video-list")
 	@ResponseBody
 	public Map<VideoTypeEnum, Integer> playerList(Long playerId, Date date, PeriodEnum period) {
@@ -123,7 +147,8 @@ public class VideoController {
 	 * @return
 	 */
 	@RequestMapping(value = "/coach")
-	public String coachIndex(@ModelAttribute("coachId") Long coachId) {
+	public String coachIndex(@ModelAttribute("coachId") Long coachId,ModelMap map) {
+		map.put("coach", coachService.findById(coachId));
 		return "video-coach";
 	}
 
@@ -144,7 +169,7 @@ public class VideoController {
 
 	@RequestMapping(value = "/upload")
 	@ResponseBody
-	public AjaxResult upload(MultipartFile video, Long playerId,Date date,PeriodEnum period,VideoTypeEnum videoType) throws IOException {
+	public AjaxResult upload(MultipartFile video, Long playerId, Date date, PeriodEnum period, VideoTypeEnum videoType) throws IOException {
 
 		// 保存视频
 		File videoDir = uploadVideoDir.getFile();
@@ -165,6 +190,7 @@ public class VideoController {
 		obj.setPeriod(period);
 		obj.setVideoPath(videoPath);
 		obj.setVideoType(videoType);
+		obj.setName(video.getOriginalFilename().split("\\.")[0]);
 
 		// save
 		videoService.add(obj);
