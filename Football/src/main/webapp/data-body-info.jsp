@@ -33,7 +33,7 @@ margin-bottom: 20px;}
   <c:set var="entity" value="BodyInfo"></c:set>
 
   <div id="data-table">
-  		<c:if test="${info eq null || info.totalDistance eq null}" >
+  		<c:if test="${(info eq null || info.totalDistance eq null) && ACCOUNT.role == 'Admin'}" >
           <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
           	<input type="file" name="excel" class="uploadify"/>
           	<input type="hidden" name="entity" value="${entity}"/>
@@ -179,7 +179,7 @@ margin-bottom: 20px;}
     <h4 class="center">在比赛中球员的运动</h4>
     <div class="pic-colomn-1">
         <h5 class="pic-title">上半场
-        	<c:if test="${info eq null || info.moveImgF eq null}" >
+        	<c:if test="${(info eq null || info.moveImgF eq null) && ACCOUNT.role == 'Admin'}" >
         	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
         		<input type="file" name="img" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
@@ -196,7 +196,7 @@ margin-bottom: 20px;}
     </div>
     <div class="pic-colomn-2">
         <h5 class="pic-title">下半场
-       		<c:if test="${info eq null || info.moveImgS eq null}" >
+       		<c:if test="${(info eq null || info.moveImgS eq null) && ACCOUNT.role == 'Admin'}" >
         	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
         		<input type="file" name="img" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
@@ -217,7 +217,7 @@ margin-bottom: 20px;}
     <h4 class="center">在比赛中球员的高速运动和冲刺</h4>
     <div class="pic-colomn-1">
         <h5 class="pic-title">上半场
-        	<c:if test="${info eq null || info.spurtImgF eq null}" >
+        	<c:if test="${(info eq null || info.spurtImgF eq null) && ACCOUNT.role == 'Admin'}" >
         	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
         		<input type="file" name="img" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
@@ -234,7 +234,7 @@ margin-bottom: 20px;}
     </div>
     <div class="pic-colomn-2">
         <h5 class="pic-title">下半场
-        	<c:if test="${info eq null || info.spurtImgS eq null}" >
+        	<c:if test="${(info eq null || info.spurtImgS eq null) && ACCOUNT.role == 'Admin'}" >
 			<form action="${ctx}/data/player/import-img" class="upload-form import-img">
         		<input type="file" name="img" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>

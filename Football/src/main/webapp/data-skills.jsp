@@ -47,7 +47,7 @@
               </div>
             <!-- //col 1 -->
             <div class="colomn-1">
-            	<c:if test="${s eq null || s.goalAndAssist eq null}" >
+            	<c:if test="${(s eq null || s.goalAndAssist eq null) && ACCOUNT.role == 'Admin'}" >
                     <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
 			          	<input type="file" name="excel" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -128,7 +128,7 @@
             <!-- //col 2-->
             <div class="colomn-2">
               	<h5 class="pic-title">比赛中的动作
-              		<c:if test="${s eq null || s.moveImg eq null}" >
+              		<c:if test="${(s eq null || s.moveImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -143,7 +143,7 @@
              	 <img src="${ctx}${(s eq null || s.moveImg eq null) ? '/static/img/placeholder_2.gif' : s.moveImg}">
               </div>
               <h5 class="pic-title">比赛中的动作成功
-              		<c:if test="${s eq null || s.moveRateImg eq null}" >
+              		<c:if test="${(s eq null || s.moveRateImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -163,7 +163,7 @@
             <!-- //col 3-->
             <div class="colomn-3">
               <h5 class="pic-title">所有动作的地点
-              		<c:if test="${s eq null || s.movePlaceImg eq null}" >
+              		<c:if test="${(s eq null || s.movePlaceImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -188,7 +188,7 @@
 
             <!-- //col 1 -->
             <div class="colomn-1">
-                    <c:if test="${s eq null || s.battle eq null}" >
+                    <c:if test="${(s eq null || s.battle eq null) && ACCOUNT.role == 'Admin'}" >
                     <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
 			          	<input type="file" name="excel" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -273,7 +273,7 @@
             <!-- //col 2-->
             <div class="colomn-2">
               <h5 class="pic-title">比赛中拼抢
-              	<c:if test="${s eq null || s.striveImg eq null}" >
+              	<c:if test="${(s eq null || s.striveImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -288,7 +288,7 @@
               	<img src="${ctx}${(s eq null || s.striveImg eq null) ? '/static/img/placeholder_2.gif' : s.striveImg}">
               </div>
               <h5 class="pic-title">比赛中赢得拼抢%
-              		<c:if test="${s eq null || s.striveRateImg eq null}" >
+              		<c:if test="${(s eq null || s.striveRateImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -308,7 +308,7 @@
             <!-- //col 3-->
             <div class="colomn-3">
               <h5 class="pic-title">所有拼抢的地点
-              		<c:if test="${s eq null || s.strivePlaceImg eq null}" >
+              		<c:if test="${(s eq null || s.strivePlaceImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -333,7 +333,7 @@
 
       <!-- //area 2-->
       <div style="width:200px" class="area-2">
-   			<c:if test="${s eq null || s.pass eq null}" >
+   			<c:if test="${(s eq null || s.pass eq null) && ACCOUNT.role == 'Admin'}" >
               <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
 	          	<input type="file" name="excel" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
@@ -424,7 +424,7 @@
           </table>
 
           	<h5 class="pic-title">在区域中失球
-          			<c:if test="${s eq null || s.loseBallImg eq null}" >
+          			<c:if test="${(s eq null || s.loseBallImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -439,7 +439,7 @@
               	<img src="${ctx}${(s eq null || s.loseBallImg eq null) ? '/static/img/placeholder_2.gif' : s.loseBallImg}">
               </div>
               <h5 class="pic-title">在区域中重夺控球
-              		<c:if test="${s eq null || s.regetBallImg eq null}" >
+              		<c:if test="${(s eq null || s.regetBallImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -459,7 +459,7 @@
       <!-- //area 3-->
       <div style="width:310px" class="area-3">
               <h5 class="pic-title">传球（上半场）
-              		<c:if test="${s eq null || s.passFImg eq null}" >
+              		<c:if test="${(s eq null || s.passFImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -474,7 +474,7 @@
               	<img src="${ctx}${(s eq null || s.passFImg eq null) ? '/static/img/placeholder_2.gif' : s.passFImg}">
               </div>
               <h5 class="pic-title">传球（下半场）
-              		<c:if test="${s eq null || s.passSImg eq null}" >
+              		<c:if test="${(s eq null || s.passSImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
@@ -489,7 +489,7 @@
               	<img src="${ctx}${(s eq null || s.passSImg eq null) ? '/static/img/placeholder_2.gif' : s.passSImg}">
               </div>
               <h5 class="pic-title">传球路线
-              		<c:if test="${s eq null || s.passRouteImg eq null}" >
+              		<c:if test="${(s eq null || s.passRouteImg eq null) && ACCOUNT.role == 'Admin'}" >
 		        	<form action="${ctx}/data/player/import-img" class="upload-form import-img">
 		        		<input type="file" name="img" class="uploadify"/>
 			          	<input type="hidden" name="entity" value="${entity}"/>
