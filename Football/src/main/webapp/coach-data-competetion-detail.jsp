@@ -35,7 +35,7 @@
 	         <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
 	          	<input type="file" name="excel" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
-	          	<input type="hidden" name="playerId" value="${teamId}"/>  <!-- 注意此处palyerId存放的是球队的id号 -->
+	          	<input type="hidden" name="playerId" value="${playerId}"/>  <!-- 注意此处palyerId存放的是球队的id号 -->
 	          	<input type="hidden" name="period" value="${period}"/>
 	          	<input type="hidden" name="date" value="${date}"/>
 
