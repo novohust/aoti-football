@@ -177,7 +177,7 @@ public class DataPlayerController {
 			t.setId(playerId);
 			ReflectionUtils.setFieldValue(instance, "team", t);
 			ReflectionUtils.setFieldValue(instance, "period", period);
-			ReflectionUtils.setFieldValue(instance, "matchDate", date);
+			ReflectionUtils.setFieldValue(instance, "matchdate", date);
 
 		}else if(entity.equals("SkillStatistics")){
 			Player p = new Player();
@@ -299,7 +299,10 @@ public class DataPlayerController {
 	 *
 	 */
 	@RequestMapping(value="/sumDetail")
-	public String getPlayercompetetionSumdetail(@ModelAttribute("playerId") Long teamId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map){
+	public String getPlayercompetetionSumdetail(@ModelAttribute("playerId") Long playerId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map){
+		SkillStatistics info = skillStatisticsService.findByPlayerAndDate(playerId, date, period);
+		map.put("info", info);
+		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
 		return "coach-data-team-member-detail";
 	}
 
