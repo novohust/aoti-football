@@ -150,6 +150,7 @@
 				if(messsage == "wrong")
 				{
 					 msg.innerHTML="登录名或密码错误";
+					 $(msg).show();
 					 uname.focus();
 				}else
 				{

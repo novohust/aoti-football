@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
+<c:set var="curTab" value="video"></c:set>
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -13,7 +14,7 @@
 		#listWrap a{
 			line-height:17px;
 		}
-		#myplayer_wrapper{
+		#myplayer_wrapper,#myplayer{
 			float:left;
 		}
     </style>
@@ -59,6 +60,7 @@
                 file:"${videos[0].videoPath}",
                 title:"${videos[0].name}",
                 width: 750,
+                logl:'',
                 height: 500,
                 dock: false
             });

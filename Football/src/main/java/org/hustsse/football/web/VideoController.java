@@ -79,7 +79,8 @@ public class VideoController {
 	 * @return
 	 */
 	@RequestMapping(value = "/player")
-	public String playerIndex(@ModelAttribute("playerId") Long playerId) {
+	public String playerIndex(@ModelAttribute("playerId") Long playerId,ModelMap map) {
+		map.put("player",playerService.findById(playerId));
 		return "video-player";
 	}
 
@@ -88,6 +89,7 @@ public class VideoController {
 			@ModelAttribute("period") PeriodEnum period, @RequestParam(required = false) Long teamId,
 			@ModelAttribute("type") VideoTypeEnum type,ModelMap map) {
 
+		map.put("player",playerService.findById(playerId));
 		List<Video> videos = null;
 		// 看球员的视频
 		if(playerId != null) {
@@ -159,6 +161,7 @@ public class VideoController {
 	 */
 	@RequestMapping(value = "/admin")
 	public String adminIndex(@ModelAttribute("teamId") Long teamId, ModelMap map) {
+		map.put("team",teamService.findById(teamId));
 		List<Player> players = teamService.findTeamPlayers(teamId);
 		map.put("players", players);
 		return "video-admin";
