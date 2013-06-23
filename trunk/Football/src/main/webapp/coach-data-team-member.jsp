@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" type="both" dateStyle="long" pattern="yyyy-MM-dd" var="today"/>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -50,7 +52,7 @@
               </li>
 
               <li id="date-choose-wrapper" >
-                  <input type="text" placeholder="请选择开始日期" class="datepicker-dropdown-year-month input-medium">
+                  <input id="date" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh();">
                   <select name="" id="" class="input-small">
                     <option value="">上午</option>
                     <option value="">下午</option>
