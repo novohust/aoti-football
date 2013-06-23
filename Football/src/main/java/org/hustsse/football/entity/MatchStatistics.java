@@ -23,7 +23,8 @@ import org.hustsse.football.enums.PeriodEnum;
 public class MatchStatistics extends IdEntity {
 
 	//统计时间相关
-	private Date matchDate;//比赛时间
+	private Date date;//比赛时间
+
 	private PeriodEnum period;//上午/下午
 
 	//比赛信息
@@ -70,13 +71,7 @@ public class MatchStatistics extends IdEntity {
 		this.uploadName = uploadName;
 	}
 
-	public Date getMatchDate() {
-		return matchDate;
-	}
 
-	public void setMatchDate(Date matchDate) {
-		this.matchDate = matchDate;
-	}
 
 	public PeriodEnum getPeriod() {
 		return period;
@@ -238,6 +233,14 @@ public class MatchStatistics extends IdEntity {
 		this.ctrlRate = ctrlRate;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	private Team team;
 
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -249,5 +252,7 @@ public class MatchStatistics extends IdEntity {
 	public void setTeam(Team team) {
 		this.team = team;
 	}
+
+
 
 }
