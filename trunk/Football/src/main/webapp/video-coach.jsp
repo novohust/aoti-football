@@ -28,7 +28,7 @@
     <script type="text/html" id="tmp">
 		<@ $.each(types,function(type,des){ @>
 			<div class="video-type-wrapper">
-				<div class="video-type <@=data[type]==0?'video-disabled':''@>">
+				<div class="video-type <@=data[type]==0?'video-disabled':''@>" href='<@= href + "&type=" + type @>'>
 					<span class="type-name"><@=des@><span>
 					<span class="label <@=data[type]>0?'label-success':'label-important'@>"><@=data[type]@></span>
 				</div>
@@ -39,14 +39,22 @@
     <%@ include file="/common/import-js.jsp"%>
 	<script type="text/javascript">
 		var coachId = ${coachId};
+		var teamId = ${coach.team.id};
 		var types;
 		function refresh(){
+			var date = $("#date").val();
+			var period = $("#period option:selected").val();
 			$.get($.appCtx+"/video/coach-video-list",{
 				"coachId":coachId,
-				"date":$("#date").val(),
-				"period":$("#period option:selected").val()
+				"date":date,
+				"period":period
 			},function(data){
-				$('#list').html(template.render("tmp",{"types":types,"$":$,"data":data}));
+				var href = $.appCtx + "/video/watch?teamId="+teamId+"&date="+date+"&period="+period;
+				$('#list').html(template.render("tmp",{"types":types,"$":$,"data":data,"href":href}));
+				$(".video-type").click(function(){
+					if($(this).is('.video-disabled'))return;
+					window.open($(this).attr('href'),"_blank");
+				});
 			});
 		}
 		$(function(){

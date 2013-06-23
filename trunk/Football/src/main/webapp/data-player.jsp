@@ -32,7 +32,7 @@
                 <a href="#collect" class="dropdown-toggle" data-toggle="tab">设备采集</a>
               </li>
               <li id="date-choose-wrapper" style="float:right;">
-                  <button class="btn">打印</button>
+                  <button class="btn" onclick="print();">打印</button>
                   <input id="date" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh();">
                   <select name="" id="period" class="input-small" onchange="refresh();">
                     <option value="Morning">上午</option>
@@ -43,13 +43,13 @@
 
             <div id="myTabContent" class="tab-content">
               <div class="tab-pane fade" id="body-info">
-                <iframe base="${ctx}/data/player/body-info" src="${ctx}/data/player/body-info?playerId=${playerId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
+                <iframe id="frame-body-info" base="${ctx}/data/player/body-info" src="${ctx}/data/player/body-info?playerId=${playerId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
               </div>
               <div class="tab-pane fade" id="skill">
-                <iframe base="${ctx}/data/player/skills" src="${ctx}/data/player/skills?playerId=${playerId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
+                <iframe id="frame-skills" base="${ctx}/data/player/skills" src="${ctx}/data/player/skills?playerId=${playerId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
               </div>
               <div class="tab-pane fade" id="collect">
-                <iframe src="data-collect-admin.html" frameborder="0" scrolling=no></iframe>
+                <iframe id="frame-collect" src="data-collect-admin.html" frameborder="0" scrolling=no></iframe>
               </div>
             </div>
     </div> <!-- /container -->
@@ -83,6 +83,11 @@
     	});
     }
 
+    function print(){
+    	var frameId = $('#myTabContent .active iframe').attr("id");
+    	window.frames[frameId].focus();
+    	window.frames[frameId].print();
+    }
 </script>
 
   </body>
