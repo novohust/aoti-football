@@ -23,7 +23,7 @@ import org.hustsse.football.enums.PeriodEnum;
 public class SkillStatistics extends IdEntity {
 
 	//统计时间相关
-	private Date date;//比赛时间
+	private Date matchdate;//比赛时间
 	private PeriodEnum period;//上午/下午
 
 	//抬头统计
@@ -94,11 +94,11 @@ public class SkillStatistics extends IdEntity {
 	}
 
 	public Date getMatchDate() {
-		return date;
+		return matchdate;
 	}
 
 	public void setMatchDate(Date matchDate) {
-		this.date = matchDate;
+		this.matchdate = matchDate;
 	}
 
 	public PeriodEnum getPeriod() {
