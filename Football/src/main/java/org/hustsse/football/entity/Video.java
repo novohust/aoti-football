@@ -26,20 +26,18 @@ import org.hustsse.football.enums.VideoTypeEnum;
 @Table
 public class Video extends IdEntity {
 
-	//统计时间相关
-	private Date matchDate;//比赛时间
+	// 统计时间相关
+	private Date matchDate;// 比赛时间
 
-	//视频信息
-	private String videoPath;//视频路径
-	private VideoTypeEnum videoType;//视频类型（射门，头球，点球etc）
-	private String videoDesc;//视频描述
+	// 视频信息
+	private String videoPath;// 视频路径
+	private VideoTypeEnum videoType;// 视频类型（射门，头球，点球etc）
+	private String videoDesc;// 视频描述
+	private String name;// 视频名称（文件名，没有后缀名）
 
-	//上传信息
-	private Date uploadTime;//上传时间
-	private String uploadName;//上传人
-
-
-
+	// 上传信息
+	private Date uploadTime;// 上传时间
+	private String uploadName;// 上传人
 
 	public Date getMatchDate() {
 		return matchDate;
@@ -57,7 +55,6 @@ public class Video extends IdEntity {
 		this.videoPath = videoPath;
 	}
 
-
 	@Enumerated(EnumType.STRING)
 	public VideoTypeEnum getVideoType() {
 		return videoType;
@@ -73,6 +70,14 @@ public class Video extends IdEntity {
 
 	public void setVideoDesc(String videoDesc) {
 		this.videoDesc = videoDesc;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Date getUploadTime() {
