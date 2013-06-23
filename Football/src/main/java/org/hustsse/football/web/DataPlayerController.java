@@ -19,6 +19,7 @@ import org.hustsse.football.entity.BodyInfo;
 import org.hustsse.football.entity.Coach;
 import org.hustsse.football.entity.MatchStatistics;
 import org.hustsse.football.entity.Player;
+import org.hustsse.football.entity.SkillStatistics;
 import org.hustsse.football.entity.Skills;
 import org.hustsse.football.entity.Team;
 import org.hustsse.football.enums.PeriodEnum;
@@ -27,6 +28,7 @@ import org.hustsse.football.service.BodyInfoService;
 import org.hustsse.football.service.CoachService;
 import org.hustsse.football.service.MatchStatisticsService;
 import org.hustsse.football.service.PlayerService;
+import org.hustsse.football.service.SkillStatisticsService;
 import org.hustsse.football.service.SkillsService;
 import org.hustsse.football.service.TeamService;
 import org.hustsse.football.utils.ReflectionUtils;
@@ -41,7 +43,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -80,6 +81,8 @@ public class DataPlayerController {
 	CoachService coachService;
 	@Autowired
 	MatchStatisticsService matchStatisticsService;
+	@Autowired
+	SkillStatisticsService skillStatisticsService;
 
 	/**
 	 * 数据查看首页
@@ -144,6 +147,8 @@ public class DataPlayerController {
 			skillsService.save((Skills) instance);
 		}else if( instance instanceof MatchStatistics){
 			matchStatisticsService.save((MatchStatistics)instance);
+		}else if( instance instanceof SkillStatistics){
+			skillStatisticsService.save((SkillStatistics)instance);
 		}
 	}
 
@@ -156,7 +161,9 @@ public class DataPlayerController {
 			instance = skillsService.findByPlayerAndDate(playerId, date, period);
 		}else if(entity.equals("MatchStatistics"))//比赛信息（教练查看）
 		{
-			instance =  matchStatisticsService.findByTeamAndDate(playerId, date, period);//注意此处，为了服用方法，这里传进来的playerId就是teamId
+			instance =  matchStatisticsService.findByTeamAndDate(playerId, date, period);//注意此处，为了服用方法，这里传进来的playerId就是teamId 比赛统计数据
+		}else if(entity.equals("SkillStatistics")){
+			instance = skillStatisticsService.findByPlayerAndDate(playerId, date, period);  //球员技术统计
 		}
 
 		if (instance == null) {
@@ -171,6 +178,13 @@ public class DataPlayerController {
 			ReflectionUtils.setFieldValue(instance, "team", t);
 			ReflectionUtils.setFieldValue(instance, "period", period);
 			ReflectionUtils.setFieldValue(instance, "matchDate", date);
+
+		}else if(entity.equals("SkillStatistics")){
+			Player p = new Player();
+			p.setId(playerId);
+			ReflectionUtils.setFieldValue(instance, "player", p);
+			ReflectionUtils.setFieldValue(instance, "period", period);
+			ReflectionUtils.setFieldValue(instance, "matchdate", date);
 		}
 		else{
 
@@ -180,7 +194,6 @@ public class DataPlayerController {
 			ReflectionUtils.setFieldValue(instance, "period", period);
 			ReflectionUtils.setFieldValue(instance, "date", date);
 		}
-
 
 		return instance;
 	}
