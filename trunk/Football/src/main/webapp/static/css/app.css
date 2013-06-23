@@ -133,8 +133,12 @@ em.no-data-tip {
 .video-disabled {
 	background-image: none;
 	box-shadow: none;
-	background-color: #f7f7f7;
 	cursor: default;
+	border: solid 1px transparent;
+}
+
+.video-disabled:hover{
+	background-color: #f5f5f5;
 }
 
 .video-disabled:hover .type-name {

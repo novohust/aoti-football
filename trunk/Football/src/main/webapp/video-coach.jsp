@@ -2,6 +2,7 @@
 <%@ include file="/common/taglibs.jsp"%>
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" type="both" dateStyle="long" pattern="yyyy-MM-dd" var="today"/>
+<c:set var="curTab" value="video"></c:set>
 
 <!DOCTYPE html>
 <html lang="zh-CN">

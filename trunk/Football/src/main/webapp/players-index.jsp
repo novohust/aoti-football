@@ -18,14 +18,14 @@
         <ul class="nav nav-pills">
         	<c:forEach items="${playersMap}" var="item">
         		<li>
-	         		<c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
+	         		<c:if test="${sessionScope.ACCOUNT.role == 'Coach' || sessionScope.ACCOUNT.role == 'Admin'}">
 	          	   		<a href="#"
 	              		data-toggle="popover" data-content='<a href="${ctx}/data/player/introduction?playerId=${item.id}">简介</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/index?playerId=${item.id}">数据</a>'
 	                    data-html="true"
 	              		data-placement="top"
 	             		style="font-weight:bold;">${item.name}</a>
 	         		</c:if>
-	         		<c:if test="${sessionScope.ACCOUNT.role != 'Coach'}">
+	         		<c:if test="${sessionScope.ACCOUNT.role == 'Player'}">
 	         			<c:if test="${sessionScope.ACCOUNT.id != item.account.id}">
 	         				<span>${item.name}</span>
 	         			</c:if>
@@ -45,7 +45,7 @@
       <h5>教练</h5>
       <div class="shadowed-box">
         <ul class="nav nav-pills">
-          <c:if test="${sessionScope.ACCOUNT.role == 'Coach'}">
+          <c:if test="${sessionScope.ACCOUNT.role == 'Coach' || sessionScope.ACCOUNT.role == 'Admin'}">
             <li class="block">
           		<span><a href="${ctx}/data/player/getCompetetion?teamId=1">比赛统计汇总</a> &nbsp;&nbsp;&nbsp; <a href="${ctx}/data/player/getCompetetionPlayer?teamId=1">球员-球队技术统计</a></span>
           	</li>

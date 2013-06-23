@@ -6,17 +6,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.hustsse.football.entity.Account;
 import org.hustsse.football.entity.BodyInfo;
 import org.hustsse.football.entity.Coach;
 import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.Skills;
 import org.hustsse.football.enums.PeriodEnum;
+import org.hustsse.football.enums.RoleEnum;
 import org.hustsse.football.service.BodyInfoService;
 import org.hustsse.football.service.CoachService;
 import org.hustsse.football.service.PlayerService;
@@ -34,6 +38,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.support.ServletContextResource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -77,7 +82,8 @@ public class DataPlayerController {
 	 * @return
 	 */
 	@RequestMapping(value = "/index")
-	public String index(@ModelAttribute("playerId") Long playerId) {
+	public String index(@ModelAttribute("playerId") Long playerId,ModelMap map) {
+		map.put("player", playerService.findById(playerId));
 		return "data-player";
 	}
 
@@ -87,7 +93,8 @@ public class DataPlayerController {
 	 * @return
 	 */
 	@RequestMapping(value="/introduction")
-	public String getIntro(@ModelAttribute("playerId") Long playerId) {
+	public String getIntro(@ModelAttribute("playerId") Long playerId,ModelMap map) {
+		map.put("player", playerService.findById(playerId));
 		return "player-intro";
 
 	}
@@ -208,11 +215,15 @@ public class DataPlayerController {
 	 *
 	 */
 	@RequestMapping(value = "/getTeam")
-	public String getTeamPlayers(@ModelAttribute("teamId")Long teamId,ModelMap map){
+	public String getTeamPlayers(@ModelAttribute("teamId")Long teamId,ModelMap map,HttpSession session){
 		List<Player>  playerlist = playerService.findPlayersByTeamId(teamId);
 		List<Coach>   coachlist  = coachService.findCoachesByTeamId(teamId);
 		map.put("playersMap", playerlist);
 		map.put("coachesMap", coachlist);
+		Account a = (Account) session.getAttribute("ACCOUNT");
+		if(a.getRole() == RoleEnum.Admin) {
+			session.setAttribute("team", teamService.findById(teamId));
+		}
 		return "players-index";
 	}
 
