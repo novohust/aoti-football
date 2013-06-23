@@ -27,7 +27,7 @@
           <option value="Afternoon">下午</option>
         </select>
         <select name="" id="playerId" class="input-small" onchange="refresh();">
-          <option value="">全部</option>
+          <option value="">全部球员</option>
           <c:forEach var="p" items="${players}">
 	          <option value="${p.id}">${p.name}</option>
           </c:forEach>
@@ -77,9 +77,9 @@
        <script type="text/html" id="tmp">
 		<@ $.each(types,function(type,des){ @>
 			<div class="video-type-wrapper">
-				<div class="video-type <@=data[type]==0?'video-disabled':''@>">
+				<div class="video-type <@=data[type]==0?'video-disabled':''@>" href='<@= href + "&type=" + type @>'>
 					<span class="type-name"><@=des@><span>
-					<a href="#" onclick="$('#myModalLabel strong').text('<@=des@>');$('#upload-type').val('<@=type@>');$('#myModal').modal();">上传</a>
+					<a href="#" onclick="event.stopPropagation();$('#myModalLabel strong').text('<@=des@>');$('#upload-type').val('<@=type@>');$('#myModal').modal();">上传</a>
 					<span class="label <@=data[type]>0?'label-success':'label-important'@>"><@=data[type]@></span>
 				</div>
 			</div>
@@ -92,13 +92,21 @@
 		var teamId = ${teamId};
 		var types;
 		function refresh(){
+			var date = $("#date").val();
+			var period = $("#period option:selected").val();
+			var playerId = $('#playerId option:selected').val();
 			$.get($.appCtx+"/video/admin-video-list",{
-				"playerId":$('#playerId option:selected').val(),
+				"playerId":playerId,
 				"teamId":teamId,
-				"date":$("#date").val(),
-				"period":$("#period option:selected").val()
+				"date":date,
+				"period":period
 			},function(data){
-				$('#list').html(template.render("tmp",{"types":types,"$":$,"data":data}));
+				var href = $.appCtx + "/video/watch?teamId="+teamId+"&date="+date+"&period="+period+"&playerId="+playerId;
+				$('#list').html(template.render("tmp",{"types":types,"$":$,"data":data,"href":href}));
+				$(".video-type").click(function(){
+					if($(this).is('.video-disabled'))return;
+					window.open($(this).attr('href'),"_blank");
+				});
 			});
 		}
 		$(function(){
