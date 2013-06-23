@@ -29,7 +29,7 @@ public class MatchStatisticsService {
 	}
 
 	public MatchStatistics findByTeamAndDate(Long teamId, Date date, PeriodEnum period){
-		Criteria c = matchStatisticsDao.createCriteria(Restrictions.eq("team.id", teamId),Restrictions.eq("matchDate", date),Restrictions.eq("period", period));
+		Criteria c = matchStatisticsDao.createCriteria(Restrictions.eq("team.id", teamId),Restrictions.eq("matchdate", date),Restrictions.eq("period", period));
 		return matchStatisticsDao.findUnique(c);
 
 	}
