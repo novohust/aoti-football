@@ -17,12 +17,15 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.hustsse.football.entity.Account;
 import org.hustsse.football.entity.BodyInfo;
 import org.hustsse.football.entity.Coach;
+import org.hustsse.football.entity.MatchStatistics;
 import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.Skills;
+import org.hustsse.football.entity.Team;
 import org.hustsse.football.enums.PeriodEnum;
 import org.hustsse.football.enums.RoleEnum;
 import org.hustsse.football.service.BodyInfoService;
 import org.hustsse.football.service.CoachService;
+import org.hustsse.football.service.MatchStatisticsService;
 import org.hustsse.football.service.PlayerService;
 import org.hustsse.football.service.SkillsService;
 import org.hustsse.football.service.TeamService;
@@ -75,6 +78,8 @@ public class DataPlayerController {
 	TeamService teamService;
 	@Autowired
 	CoachService coachService;
+	@Autowired
+	MatchStatisticsService matchStatisticsService;
 
 	/**
 	 * 数据查看首页
@@ -137,6 +142,8 @@ public class DataPlayerController {
 			bodyInfoService.save((BodyInfo) instance);
 		}else if(instance instanceof Skills) {
 			skillsService.save((Skills) instance);
+		}else if( instance instanceof MatchStatistics){
+			matchStatisticsService.save((MatchStatistics)instance);
 		}
 	}
 
@@ -147,6 +154,9 @@ public class DataPlayerController {
 			instance = bodyInfoService.findByPlayerAndDate(playerId, date, period);
 		}else if(entity.equals("Skills")) {
 			instance = skillsService.findByPlayerAndDate(playerId, date, period);
+		}else if(entity.equals("MatchStatistics"))//比赛信息（教练查看）
+		{
+			instance =  matchStatisticsService.findByTeamAndDate(playerId, date, period);//注意此处，为了服用方法，这里传进来的playerId就是teamId
 		}
 
 		if (instance == null) {
@@ -154,11 +164,24 @@ public class DataPlayerController {
 			instance = clazz.newInstance();
 		}
 
-		Player p = new Player();
-		p.setId(playerId);
-		ReflectionUtils.setFieldValue(instance, "player", p);
-		ReflectionUtils.setFieldValue(instance, "period", period);
-		ReflectionUtils.setFieldValue(instance, "date", date);
+		if(entity.equals("MatchStatistics"))//教练- 比赛数据只有team对象，没有player
+		{
+			Team t = new Team();
+			t.setId(playerId);
+			ReflectionUtils.setFieldValue(instance, "team", t);
+			ReflectionUtils.setFieldValue(instance, "period", period);
+			ReflectionUtils.setFieldValue(instance, "matchDate", date);
+		}
+		else{
+
+			Player p = new Player();
+			p.setId(playerId);
+			ReflectionUtils.setFieldValue(instance, "player", p);
+			ReflectionUtils.setFieldValue(instance, "period", period);
+			ReflectionUtils.setFieldValue(instance, "date", date);
+		}
+
+
 		return instance;
 	}
 
@@ -227,9 +250,8 @@ public class DataPlayerController {
 		return "players-index";
 	}
 
-
 	/**
-	 * 教练获取比赛汇总信息-可链接到视频
+	 * 教练获取比赛汇总信息-可链接到视频    教练-比赛信息
 	 *
 	 */
 	@RequestMapping(value="/getCompetetion")
@@ -237,13 +259,35 @@ public class DataPlayerController {
 		return "coach-data-competetion";
 	}
 
-
 	/**
-	 * 教练获取球队或者个人的技术统计 纯displayer(默认获取球队最近的比赛的技术统计)
+	 * 获取指定时间的比赛统计信息      教练-比赛信息  子frame
 	 *
 	 */
-	@RequestMapping(value="/getCompetetionPlayer")
-	public String getCompetetionPlayer(@ModelAttribute("teamId")Long teamId,ModelMap map){
+	@RequestMapping(value="/competetion")
+	public String getCompetetionDetail(@ModelAttribute("playerId") Long teamId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map){
+		MatchStatistics info = matchStatisticsService.findByTeamAndDate(teamId, date, period);
+		map.put("info", info);
+		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
+		return "coach-data-competetion-detail";
+	}
+
+	/**
+	 *
+	 * 获取指定时间区间球员（或者球队）的比赛统计信息         教练-球员技术统计
+	 *
+	 */
+	@RequestMapping(value="/getPlayercompetetionSum")
+	public String getPlayercompetetionSum(@ModelAttribute("teamId")Long teamId,ModelMap map){
 		return "coach-data-team-member";
 	}
+
+	/**
+	 * 获取指定时间区间球员（或者球队）的比赛统计信息        教练-球员技术统计  子frame
+	 *
+	 */
+	@RequestMapping(value="/sumDetail")
+	public String getPlayercompetetionSumdetail(@ModelAttribute("playerId") Long teamId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map){
+		return "coach-data-team-member-detail";
+	}
+
 }
