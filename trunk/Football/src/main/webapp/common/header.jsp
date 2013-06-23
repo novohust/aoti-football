@@ -83,8 +83,8 @@
                 <c:if test="${sessionScope.ACCOUNT.role == 'Admin'}">
                 	<li>
                 	<%// team在admin登录查看某个球队信息时被保存在session中 -- team.jsp %>
-                	<a href="${ctx}/data/player/getTeam?teamId=${sessionScope.team.id}">
-                		${sessionScope.team.name}
+                	<a href="${ctx}/data/player/getTeam?teamId=${team.id}">
+                		${team.name}
                 	 </a></li>
 
 	                 <c:if test="${player!=null}">
