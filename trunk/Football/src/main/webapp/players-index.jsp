@@ -47,7 +47,7 @@
         <ul class="nav nav-pills">
           <c:if test="${sessionScope.ACCOUNT.role == 'Coach' || sessionScope.ACCOUNT.role == 'Admin'}">
             <li class="block">
-          		<span><a href="${ctx}/data/player/getCompetetion?teamId=1">比赛统计汇总</a> &nbsp;&nbsp;&nbsp; <a href="${ctx}/data/player/getCompetetionPlayer?teamId=1">球员-球队技术统计</a></span>
+          		<span><a href="${ctx}/data/player/getCompetetion?teamId=1">比赛统计汇总</a> &nbsp;&nbsp;&nbsp; <a href="${ctx}/data/player/getPlayercompetetionSum?teamId=1">球员-球队技术统计</a></span>
           	</li>
            </c:if>
              <c:forEach items="${coachesMap}" var="item">
