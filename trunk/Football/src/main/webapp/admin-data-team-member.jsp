@@ -41,7 +41,7 @@
 
        <ul id="myTab" class="nav nav-tabs datectrl" style="float:left">
               <li id="date-choose-wrapper" >
-                  <select name="" id="playerlist" class="input-small" onchange="refresh()" >
+                  <select name="" id="playerlist" class="input-small" onchange="refresh();" >
                    <c:forEach items="${players}" var="item">
 	                    <option value="${item.id}">${item.number}-${item.name}</option>
                     </c:forEach>
@@ -49,10 +49,10 @@
               </li>
 
               <li id="date-choose-wrapper" >
-                  <input id="datefrom" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh()" >
-                  <select name="" id="period" class="input-small" onchange="refresh()" >
-                    <option value="">上午</option>
-                    <option value="">下午</option>
+                  <input id="date" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh();" >
+                  <select name="" id="period" class="input-small" onchange="refresh();" >
+                    <option value="Morning">上午</option>
+                    <option value="Afternoon">下午</option>
                   </select>
               </li>
         </ul>
@@ -60,17 +60,18 @@
 
 
     </div> <!-- /container --><!-- 默认加载全队当天上午的数据 -->
-           <iframe id="playercompetetiondetail" base="${ctx}/data/player/adminPlyaeruploadGet" src="${ctx}/data/player/adminPlyaeruploadGet?playerId=1&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
+           <iframe id="adminPlyaeruploaddetail" base="${ctx}/data/player/adminPlyaeruploadGet" src="${ctx}/data/player/adminPlyaeruploadGet?playerId=1&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
    </body>
 
   <%@ include file="/common/import-js.jsp"%>
   		<script type="text/javascript">
-	        function fresh(){
+	        function refresh(){
 	        	 var playerId = ${teamId};
 	             var date   = $('#date').val();
-	             var period = $('#period').val();
+	             var period = $('#period option:selected').val();
 	             var playerId = $('#playerlist option:selected').val();//获取选中的队员id
-	             $('#playercompetetiondetail').attr('src',link);
+	             var link = "${ctx}/data/player/adminPlyaeruploadGet?playerId="+playerId+"&date="+date+"&period="+period;
+	             $('#adminPlyaeruploaddetail').attr('src',link);
 	   		}
         </script>
 </html>
