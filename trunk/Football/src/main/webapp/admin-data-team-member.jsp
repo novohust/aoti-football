@@ -40,9 +40,8 @@
       </ul>
 
        <ul id="myTab" class="nav nav-tabs datectrl" style="float:left">
-              <li><span class="itemtitle itemsubtitle">筛选条件：</span><li>
               <li id="date-choose-wrapper" >
-                  <select name="" id="playerlist" class="input-small">
+                  <select name="" id="playerlist" class="input-small" onchange="refresh()" >
                    <c:forEach items="${players}" var="item">
 	                    <option value="${item.id}">${item.number}-${item.name}</option>
                     </c:forEach>
@@ -50,8 +49,8 @@
               </li>
 
               <li id="date-choose-wrapper" >
-                  <input id="datefrom" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" >
-                  <select name="" id="periodfrom" class="input-small">
+                  <input id="datefrom" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh()" >
+                  <select name="" id="period" class="input-small" onchange="refresh()" >
                     <option value="">上午</option>
                     <option value="">下午</option>
                   </select>
@@ -61,17 +60,15 @@
 
 
     </div> <!-- /container --><!-- 默认加载全队当天上午的数据 -->
-           <iframe id="playercompetetiondetail" base="${ctx}/data/player/sumDetail" src="${ctx}/data/player/sumDetail?playerId=1&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
+           <iframe id="playercompetetiondetail" base="${ctx}/data/player/adminPlyaeruploadGet" src="${ctx}/data/player/adminPlyaeruploadGet?playerId=1&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
    </body>
 
   <%@ include file="/common/import-js.jsp"%>
   		<script type="text/javascript">
-	        function search(){
+	        function fresh(){
 	        	 var playerId = ${teamId};
-	             var datefrom   = $('#datefrom').val();
-	             var dateto     = $('#datefrom').val();
-	             var periodfrom = $('#periodfrom').val();
-	             var periodto = $('#periodto').val();
+	             var date   = $('#date').val();
+	             var period = $('#period').val();
 	             var playerId = $('#playerlist option:selected').val();//获取选中的队员id
 	             $('#playercompetetiondetail').attr('src',link);
 	   		}
