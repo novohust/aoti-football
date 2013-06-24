@@ -36,6 +36,21 @@ public class SkillStatisticsService {
 		return skillStatisticsDao.findUnique(c);
 	}
 
+	//获取某个时间区间段内 队员的比赛信息（需要汇总）
+	public  SkillStatistics findByPlayerAndDate(Long teamId,Long playerId, Date datefrom, PeriodEnum periodfrom, Date dateto,PeriodEnum periodto){
+		Criteria c ;
+		if( playerId == 0)//表示全球队
+		{
+			//需要修改 ，汇总
+			c = skillStatisticsDao.createCriteria(Restrictions.eq("player.id", playerId), Restrictions.eq("matchdate", datefrom),
+					Restrictions.eq("period", periodfrom));
+		}else{
+			 c = skillStatisticsDao.createCriteria(Restrictions.eq("player.id", playerId), Restrictions.eq("matchdate", datefrom),
+				Restrictions.eq("period", periodfrom));
+			}
+		return skillStatisticsDao.findUnique(c);
+	}
+
 	@Transactional(readOnly = false)
 	public void save(SkillStatistics t) {
 		skillStatisticsDao.save(t);
