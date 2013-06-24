@@ -36,7 +36,9 @@
      	<%@ include file="/common/header.jsp"%>
 
      	<ul id="myTab" class="nav nav-tabs datectrl">
-         <li><span class="itemtitle" >球员技术统计-浏览&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/adminPlyaerupload?teamId=${teamId}" >管理员上传</a></span></li>
+         <li><span class="itemtitle" >球员技术统计-浏览&nbsp;&nbsp;&nbsp;
+          <c:if test="${sessionScope.ACCOUNT.role == 'Admin'}"><a href="${ctx}/data/player/adminPlyaerupload?teamId=${teamId}" >管理员上传</a></c:if>
+         </span></li>
       </ul>
 
        <ul id="myTab" class="nav nav-tabs datectrl" style="float:left">
