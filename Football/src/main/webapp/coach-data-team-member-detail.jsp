@@ -28,9 +28,6 @@
        <!-- div 头部介绍以及图片 start-->
         <div class="shadowed-box brief" >
           <div style="width:70%; position:absolute;">
-           <ul style="margin-left: 10px; ">
-            <li class="inli"><span>涂东旭 2号</span></li>
-          </ul>
           <ul class="nav  nav-pills">
             <li ><span>出场时间</span></li>
               <li ><span>${info eq null ? nullTip : info.showTime}</span></li>
