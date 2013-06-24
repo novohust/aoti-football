@@ -42,43 +42,48 @@
        <ul id="myTab" class="nav nav-tabs datectrl" style="float:left">
               <li><span class="itemtitle itemsubtitle">筛选条件：</span><li>
               <li id="date-choose-wrapper" >
-                  <select name="" id="" class="input-small">
-                    <option value="">全球队</option>
-                    <option value="">张猛</option>
-                    <option value="">张三</option>
-                    <option value="">李四</option>
-                    <option value="">王五</option>
+                  <select name="" id="playerlist" class="input-small">
+                    <option value="All">全球队</option>
+                   <c:forEach items="${players}" var="item">
+	                    <option value="${item.id}">${item.number}-${item.name}</option>
+                    </c:forEach>
                   </select>
               </li>
 
               <li id="date-choose-wrapper" >
-                  <input id="date" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh();">
-                  <select name="" id="" class="input-small">
+                  <input id="datefrom" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" >
+                  <select name="" id="periodfrom" class="input-small">
                     <option value="">上午</option>
                     <option value="">下午</option>
                   </select>
               </li>
+              <li id="date-choose-wrapper">至</li>
               <li id="date-choose-wrapper" >
-                  <input type="text" placeholder="请选择截止日期" class="datepicker-dropdown-year-month input-medium">
-                  <select name="" id="" class="input-small">
+                  <input  id="dateto" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" >
+                  <select name="" id="periodto" class="input-small">
                     <option value="">上午</option>
                     <option value="">下午</option>
                   </select>
               </li>
               <li><button class="btn" onclick="search()">查询</button></li>
-              <li><button class="btn">导入</button> </li>
         </ul>
 
 
 
-    </div> <!-- /container -->
-           <iframe id="playercompetetiondetail" base="${ctx}/data/player/sumDetail" src="${ctx}/data/player/sumDetail?playerId=${teamId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
+    </div> <!-- /container --><!-- 默认加载全队当天上午的数据 -->
+           <iframe id="playercompetetiondetail" base="${ctx}/data/player/sumDetail" src="${ctx}/data/player/sumDetail?playerId=All&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
    </body>
 
   <%@ include file="/common/import-js.jsp"%>
   		<script type="text/javascript">
 	        function search(){
-
+	        	 var playerId = ${teamId};
+	             var datefrom   = $('#datefrom').val();
+	             var dateto     = $('#datefrom').val();
+	             var periodfrom = $('#periodfrom').val();
+	             var periodto = $('#periodto').val();
+	             var playerId = $('#playerlist option:selected').val();//获取选中的队员id
+	             $('#playercompetetiondetail').load(link);
 	   		}
         </script>
 </html>
