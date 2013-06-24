@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
-<jsp:useBean id="now" class="java.util.Date" />
-<fmt:formatDate value="${now}" type="both" dateStyle="long" pattern="yyyy-MM-dd" var="today"/>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -33,7 +31,7 @@
 	         <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
 	          	<input type="file" name="excel" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
-	          	<input type="hidden" name="playerId" value="${teamId}"/>  <!-- 注意此处palyerId存放的是球队的id号 -->
+	          	<input type="hidden" name="playerId" value="${playerId}"/>  <!-- 注意此处palyerId存放的是球队的id号 -->
 	          	<input type="hidden" name="period" value="${period}"/>
 	          	<input type="hidden" name="date" value="${date}"/>
 
