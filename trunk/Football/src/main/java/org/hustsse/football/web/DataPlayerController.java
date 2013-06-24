@@ -303,10 +303,11 @@ public class DataPlayerController {
 	 *
 	 */
 	@RequestMapping(value="/sumDetail")
-	public String getPlayercompetetionSumdetail(@ModelAttribute("playerId") Long playerId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map){
-		SkillStatistics info = skillStatisticsService.findByPlayerAndDate(playerId, date, period);
+	public String getPlayercompetetionSumdetail(@ModelAttribute("teamId")Long teamId,@ModelAttribute("playerId")Long playerId, @ModelAttribute("datefrom")Date datefrom, @ModelAttribute("periodfrom") PeriodEnum periodfrom, @ModelAttribute("dateto")Date dateto, @ModelAttribute("periodfrom") PeriodEnum periodto,ModelMap map){
+
+		SkillStatistics info = skillStatisticsService.findByPlayerAndDate(teamId,playerId, datefrom, periodfrom,dateto,periodto);
 		map.put("info", info);
-		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
+		//map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(datefrom));
 		return "coach-data-team-member-detail";
 	}
 
