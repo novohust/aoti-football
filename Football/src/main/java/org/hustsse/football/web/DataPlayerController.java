@@ -103,7 +103,7 @@ public class DataPlayerController {
 	@RequestMapping(value="/introduction")
 	public String getIntro(@ModelAttribute("playerId") Long playerId,ModelMap map) {
 		map.put("player", playerService.findById(playerId));
-		return "player-intro";
+		return "/intro/"+playerId;
 
 	}
 
