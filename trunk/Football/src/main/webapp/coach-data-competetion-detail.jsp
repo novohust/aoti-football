@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/common/taglibs.jsp"%>
-<jsp:useBean id="now" class="java.util.Date" />
-<fmt:formatDate value="${now}" type="both" dateStyle="long" pattern="yyyy-MM-dd" var="today"/>
 
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -27,7 +25,6 @@
         <c:set var="entity" value="MatchStatistics"></c:set>
 
     <div class="container">
-
 
          <div position="relative" style="position: relative;">
            <div id="data-table">
