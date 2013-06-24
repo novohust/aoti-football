@@ -1,0 +1,33 @@
+/*球员简介页面公用css*/
+.intro-title {
+	text-align: center;
+}
+
+.avatar {
+	max-width: 150px;
+	float: left;
+	border: solid 1px #ddd;
+	border-radius: 5px;
+	box-shadow: 0px 0px 7px #ddd;
+	margin: 0 60px 0 185px;
+}
+
+.table-title {
+	text-align: center;
+}
+
+h5 {
+	margin-top: 40px;
+}
+
+@media ( min-width : 768px) and (max-width: 979px) {
+	.avatar {
+		margin-left: 75px;
+	}
+}
+
+@media ( max-width : 767px) {
+	.avatar {
+		margin-left: 30px;
+	}
+}
