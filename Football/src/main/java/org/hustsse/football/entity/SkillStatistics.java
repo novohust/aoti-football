@@ -253,13 +253,6 @@ public class SkillStatistics extends IdEntity {
 		this.passLane = passLane;
 	}
 
-	public String getOffsied() {
-		return offside;
-	}
-
-	public void setOffsied(String offsied) {
-		this.offside = offsied;
-	}
 
 	public String getStealSucc() {
 		return stealSucc;
@@ -459,5 +452,13 @@ public class SkillStatistics extends IdEntity {
 
 	public void setMatchdate(Date matchdate) {
 		this.matchdate = matchdate;
+	}
+
+	public String getOffside() {
+		return offside;
+	}
+
+	public void setOffside(String offside) {
+		this.offside = offside;
 	}
 }
