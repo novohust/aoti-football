@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hustsse.football.dao.TeamDao;
 import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.Team;
+import org.hustsse.football.enums.GenderEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +34,11 @@ public class TeamService {
 
 	public List<Team> findAllTeamByClubId(Long clubId){
 		return teamDao.find("from Team t where t.club.id = ?",clubId);
+	}
+	public List<Team> findMaleTeams(Long clubId){
+		return teamDao.find("from Team t where t.club.id = ? and t.gender = ?",clubId,GenderEnum.Male);
+	}
+	public List<Team> findFemaleTeams(Long clubId){
+		return teamDao.find("from Team t where t.club.id = ? and t.gender = ?",clubId,GenderEnum.Female);
 	}
 }
