@@ -62,70 +62,82 @@
               <tbody>
               <tr>
                 <td class="right">总射门</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.totalShot}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                     ${info eq null || info.totalShot eq null ? nullTip : info.totalShot}</a></td>
               </tr>
               <tr>
                 <td class="right">射正球门</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.shotTarget}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                    ${info eq null || info.totalShot eq null ? nullTip : info.shotTarget}</a></td>
               </tr>
               <tr>
                 <td class="right">射门偏出</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.shotOut}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                    ${info eq null || info.totalShot eq null ? nullTip : info.shotOut}</a></td>
               </tr>
               <tr>
                 <td class="right">击中门框</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.shotGate}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                	${info eq null || info.totalShot eq null ? nullTip : info.shotGate}</a></td>
               </tr>
               <tr>
                 <td class="right">直塞球</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.throughBall}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                   ${info eq null || info.totalShot eq null ? nullTip : info.throughBall}</a></td>
               </tr>
               <tr>
                 <td class="right">越位</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.offsied}</a></td>
+                <td > <a href="javascript:void(0)" onclick="videoclick('Card',this);">
+					${info eq null || info.totalShot eq null ? nullTip : info.offsied}</a></td>
               </tr>
               <tr>
                 <td class="right">抢断</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.steal}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                    ${info eq null || info.totalShot eq null ? nullTip : info.steal}</a></td>
               <tr>
                 <td class="right">任意球</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.free}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                	${info eq null || info.totalShot eq null ? nullTip : info.free}</a></td>
               </tr>
               <tr>
                 <td class="right">犯规</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.foul}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                    ${info eq null || info.totalShot eq null ? nullTip : info.foul}</a></td>
               </tr>
               <tr>
                 <td class="right">角球</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.corner}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                	${info eq null || info.totalShot eq null ? nullTip : info.corner}</a></td>
               </tr>
               <tr>
                 <td class="right">界外球</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.outBound}</a></td>
+                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                    ${info eq null || info.totalShot eq null ? nullTip : info.outBound}</a></td>
               </tr>
               <tr>
                 <td class="right">超过25码长传</td>
-               <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.longPass}</a></td>
+               <td ><<a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                   ${info eq null || info.totalShot eq null ? nullTip : info.longPass}</a></td>
               </tr>
               <tr>
                 <td class="right">传球成功率</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.passSuccRate}</a></td>
+                <td >${info eq null || info.totalShot eq null ? nullTip : info.passSuccRate}</a></td>
               </tr>
               <tr>
                 <td class="right">传中成功率</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.crossRate}</a></td>
+                <td >${info eq null || info.totalShot eq null ? nullTip : info.crossRate}</a></td>
               </tr>
               <tr>
                 <td class="right">抢断成功率</td>
-               <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.stealRate}</a></td>
+               <td >${info eq null || info.totalShot eq null ? nullTip : info.stealRate}</a></td>
               </tr>
               <tr>
                 <td class="right">头球成功率</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.headRate}</a></td>
+                <td >${info eq null || info.totalShot eq null ? nullTip : info.headRate}</a></td>
               </tr>
               <tr>
                 <td class="right">控球率</td>
-                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.ctrlRate}</a></td>
+                <td >${info eq null || info.totalShot eq null ? nullTip : info.ctrlRate}</a></td>
               </tr>
               </tbody>
           </table>
@@ -135,6 +147,16 @@
     </div> <!-- /container -->
   </body>
    <%@ include file="/common/import-js.jsp"%>
+
+   <script type="text/javascript">
+        function videoclick(type,obj){
+        	var link = "${ctx}/video/watch?teamId=${playerId}&date=${date}&period=${period}&type="+type;
+        	obj.target="_blank";
+            obj.href = link;
+            obj.click();
+        }
+
+   </script>
 
 
 </html>
