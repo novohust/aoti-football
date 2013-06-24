@@ -269,6 +269,7 @@ public class DataPlayerController {
 	 */
 	@RequestMapping(value="/getCompetetion")
 	public String getCompetetion(@ModelAttribute("teamId")Long teamId,ModelMap map){
+		//map.put("player", playerService.findById(playerId));
 		return "coach-data-competetion";
 	}
 
@@ -291,6 +292,9 @@ public class DataPlayerController {
 	 */
 	@RequestMapping(value="/getPlayercompetetionSum")
 	public String getPlayercompetetionSum(@ModelAttribute("teamId")Long teamId,ModelMap map){
+		//根据teamid找出所有的队员
+		List<Player> playerlist = playerService.findPlayersByTeamId(teamId);
+		map.put("players",playerlist );
 		return "coach-data-team-member";
 	}
 
@@ -304,6 +308,31 @@ public class DataPlayerController {
 		map.put("info", info);
 		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
 		return "coach-data-team-member-detail";
+	}
+
+	/**
+	 *
+	 * 获取指定时间区间球员（或者球队）的比赛统计信息        管理员上传 教练-球员技术统计
+	 *
+	 */
+	@RequestMapping(value="/adminPlyaerupload")
+	public String adminPlyaerupload(@ModelAttribute("teamId")Long teamId,ModelMap map){
+		//根据teamid找出所有的队员
+		List<Player> playerlist = playerService.findPlayersByTeamId(teamId);
+		map.put("players",playerlist );
+		return "admin-data-team-member";
+	}
+
+	/**
+	 * 获取指定时间区间球员（或者球队）的比赛统计信息        管理员上传  教练-球员技术统计  子frame
+	 *
+	 */
+	@RequestMapping(value="/adminPlyaeruploadGet")
+	public String getadminPlyaerupload(@ModelAttribute("playerId") Long playerId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map){
+		SkillStatistics info = skillStatisticsService.findByPlayerAndDate(playerId, date, period);
+		map.put("info", info);
+		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
+		return "admin-data-team-member-detailupload";
 	}
 
 }
