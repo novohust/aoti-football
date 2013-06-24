@@ -28,7 +28,7 @@
 
          <div position="relative" style="position: relative;">
            <div id="data-table">
-           <c:if test="${info eq null || info.totalShot eq null}" >
+           <c:if test="${(info eq null || info.totalShot eq null )&& sessionScope.ACCOUNT.role == 'Admin'}" >
 	         <form action="${ctx}/data/player/import-excel" class="upload-form import-excel">
 	          	<input type="file" name="excel" class="uploadify"/>
 	          	<input type="hidden" name="entity" value="${entity}"/>
@@ -62,11 +62,11 @@
               <tbody>
               <tr>
                 <td class="right">总射门</td>
-                <td ><a href="video-player-list.html">${info eq null || info.totalShot eq null ? nullTip : info.totalShot}</a></td>
+                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.totalShot}</a></td>
               </tr>
               <tr>
                 <td class="right">射正球门</td>
-                <td ><a href="video-player-list.html">${info eq null || info.totalShot eq null ? nullTip : info.shotTarget}</a></td>
+                <td ><a href="#">${info eq null || info.totalShot eq null ? nullTip : info.shotTarget}</a></td>
               </tr>
               <tr>
                 <td class="right">射门偏出</td>
