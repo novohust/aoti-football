@@ -62,61 +62,61 @@
               <tbody>
               <tr>
                 <td class="right">总射门</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                      ${info eq null || info.totalShot eq null ? nullTip : info.totalShot}</a></td>
               </tr>
               <tr>
                 <td class="right">射正球门</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                     ${info eq null || info.totalShot eq null ? nullTip : info.shotTarget}</a></td>
               </tr>
               <tr>
                 <td class="right">射门偏出</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                     ${info eq null || info.totalShot eq null ? nullTip : info.shotOut}</a></td>
               </tr>
               <tr>
                 <td class="right">击中门框</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                 	${info eq null || info.totalShot eq null ? nullTip : info.shotGate}</a></td>
               </tr>
               <tr>
                 <td class="right">直塞球</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                    ${info eq null || info.totalShot eq null ? nullTip : info.throughBall}</a></td>
               </tr>
               <tr>
                 <td class="right">越位</td>
-                <td > <a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td > <a href="javascript:void(0)" onclick="videoclick('OffSide',this);">
 					${info eq null || info.totalShot eq null ? nullTip : info.offsied}</a></td>
               </tr>
               <tr>
                 <td class="right">抢断</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Goal',this);">
                     ${info eq null || info.totalShot eq null ? nullTip : info.steal}</a></td>
               <tr>
                 <td class="right">任意球</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('FreeShot',this);">
                 	${info eq null || info.totalShot eq null ? nullTip : info.free}</a></td>
               </tr>
               <tr>
                 <td class="right">犯规</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Faul',this);">
                     ${info eq null || info.totalShot eq null ? nullTip : info.foul}</a></td>
               </tr>
               <tr>
                 <td class="right">角球</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                 	${info eq null || info.totalShot eq null ? nullTip : info.corner}</a></td>
               </tr>
               <tr>
                 <td class="right">界外球</td>
-                <td ><a href="javascript:void(0)" onclick="videoclick('Card',this);">
+                <td ><a href="javascript:void(0)" onclick="videoclick('Shoot',this);">
                     ${info eq null || info.totalShot eq null ? nullTip : info.outBound}</a></td>
               </tr>
               <tr>
                 <td class="right">超过25码长传</td>
-               <td ><<a href="javascript:void(0)" onclick="videoclick('Card',this);">
+               <td ><<a href="javascript:void(0)" onclick="videoclick('Pass',this);">
                    ${info eq null || info.totalShot eq null ? nullTip : info.longPass}</a></td>
               </tr>
               <tr>
