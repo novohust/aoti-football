@@ -83,6 +83,7 @@
 	             var periodfrom = $('#periodfrom').val();
 	             var periodto = $('#periodto').val();
 	             var playerId = $('#playerlist option:selected').val();//获取选中的队员id
+	             var link   ="${ctx}/data/player/sumDetail?playerId="+playerId+"&date="+date+"&period="+period;
 	             $('#playercompetetiondetail').attr('src',link);
 	   		}
         </script>
