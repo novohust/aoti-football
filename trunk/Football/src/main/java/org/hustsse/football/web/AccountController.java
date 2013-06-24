@@ -90,8 +90,10 @@ public class AccountController {
 	//为俱乐部获取下属球队
 	@RequestMapping(value = "/getClub")
 	public String  getTeams(@ModelAttribute("clubId") Long clubId, ModelMap map ){
-		List<Team> teamlist = teamService.findAllTeamByClubId(clubId);
-		map.put("teamMap", teamlist);
+		List<Team> maleTeam = teamService.findMaleTeams(clubId);
+		List<Team> femaleTeam = teamService.findFemaleTeams(clubId);
+		map.put("maleTeam", maleTeam);
+		map.put("femaleTeam", femaleTeam);
 		return "team";
 	}
 }
