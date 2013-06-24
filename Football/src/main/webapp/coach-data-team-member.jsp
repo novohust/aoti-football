@@ -36,7 +36,7 @@
      	<%@ include file="/common/header.jsp"%>
 
      	<ul id="myTab" class="nav nav-tabs datectrl">
-         <li><span class="itemtitle" >球员技术统计</span></li>
+         <li><span class="itemtitle" >球员技术统计-浏览&nbsp;&nbsp;&nbsp;<a href="${ctx}/data/player/adminPlyaerupload?teamId=${teamId}" >管理员上传</a></span></li>
       </ul>
 
        <ul id="myTab" class="nav nav-tabs datectrl" style="float:left">
@@ -71,7 +71,7 @@
 
 
     </div> <!-- /container --><!-- 默认加载全队当天上午的数据 -->
-           <iframe id="playercompetetiondetail" base="${ctx}/data/player/sumDetail" src="${ctx}/data/player/sumDetail?playerId=All&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
+           <iframe id="playercompetetiondetail" base="${ctx}/data/player/sumDetail" src="${ctx}/data/player/sumDetail?playerId=1&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
    </body>
 
   <%@ include file="/common/import-js.jsp"%>
@@ -83,7 +83,7 @@
 	             var periodfrom = $('#periodfrom').val();
 	             var periodto = $('#periodto').val();
 	             var playerId = $('#playerlist option:selected').val();//获取选中的队员id
-	             $('#playercompetetiondetail').load(link);
+	             $('#playercompetetiondetail').attr('src',link);
 	   		}
         </script>
 </html>
