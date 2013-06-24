@@ -27,7 +27,7 @@
      	<%@ include file="/common/header.jsp"%>
             <form>
      	      <ul id="myTab" class="nav nav-tabs datectrl">
-              <li class="itemtitle">2013年5月12日上午比赛-卓尔vs鲁能</li>
+              <li id="itemtitle" class="itemtitle">&nbsp;&nbsp;&nbsp;&nbsp;比赛统计汇总</li>
               <li id="date-choose-wrapper" style="float:right;">
                   <input id="date" type="text" placeholder="请选择日期"  value="${today}" class="datepicker-dropdown-year-month input-medium" onchange="refresh();">
                   <select name="" id="period" class="input-small" onchange="refresh();">
