@@ -63,8 +63,22 @@
      <%@ include file="/common/header.jsp"%>
 
       <!-- start 俱乐部球队列表-->
-       <c:if test="${!empty teamMap}">
-		<c:forEach items="${teamMap}" var="item">
+       <c:if test="${!empty maleTeam}">
+       <h3>男队</h3>
+		<c:forEach items="${maleTeam}" var="item">
+		  <div class="team-wrapper team">
+		       <a href="javascript:" onclick="teamClick(${item.id});" role="button" class="btn" data-toggle="modal">
+		       	<img  src="${ctx}${item.flagpath}" alt=${item.name}>
+		       	<span display:="" block="" style=" display: block;">${item.name}</span>
+		       </a>
+		  </div>
+		</c:forEach>
+	  </c:if>
+
+       <c:if test="${!empty femaleTeam}">
+       <div class="clearfix"></div>
+       <h3>女队</h3>
+		<c:forEach items="${femaleTeam}" var="item">
 		  <div class="team-wrapper team">
 		       <a href="javascript:" onclick="teamClick(${item.id});" role="button" class="btn" data-toggle="modal">
 		       	<img  src="${ctx}${item.flagpath}" alt=${item.name}>
