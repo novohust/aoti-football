@@ -4,11 +4,15 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hustsse.football.enums.GenderEnum;
 
 /**
  * 球队
@@ -22,6 +26,7 @@ public class Team extends IdEntity {
 
 	private String name;   //队名
 	private String flagpath;//队旗路径
+	private GenderEnum gender;	// 男队女队
 
 
 	private Club club;
@@ -80,6 +85,15 @@ public class Team extends IdEntity {
 
 	public void setFlagpath(String flagpath) {
 		this.flagpath = flagpath;
+	}
+
+	@Enumerated(EnumType.STRING)
+	public GenderEnum getGender() {
+		return gender;
+	}
+
+	public void setGender(GenderEnum gender) {
+		this.gender = gender;
 	}
 
 
