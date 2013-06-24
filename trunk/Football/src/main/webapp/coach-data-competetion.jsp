@@ -56,7 +56,7 @@
           var date   = $('#date').val();
           var period = $('#period option:selected').val();
           var link   ="${ctx}/data/player/competetion?playerId="+teamId+"&date="+date+"&period="+period;
-          $('#competetiondetail').load(link);
+          $('#competetiondetail').attr('src',link);
       }
    </script>
 
