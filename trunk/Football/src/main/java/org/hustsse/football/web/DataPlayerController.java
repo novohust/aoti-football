@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -17,7 +18,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.hustsse.football.entity.Account;
 import org.hustsse.football.entity.BodyInfo;
 import org.hustsse.football.entity.Coach;
+import org.hustsse.football.entity.DeviceInfo;
 import org.hustsse.football.entity.MatchStatistics;
+import org.hustsse.football.entity.MonitorRecord;
 import org.hustsse.football.entity.Player;
 import org.hustsse.football.entity.SkillStatistics;
 import org.hustsse.football.entity.Skills;
@@ -26,6 +29,7 @@ import org.hustsse.football.enums.PeriodEnum;
 import org.hustsse.football.enums.RoleEnum;
 import org.hustsse.football.service.BodyInfoService;
 import org.hustsse.football.service.CoachService;
+import org.hustsse.football.service.DeviceInfoService;
 import org.hustsse.football.service.MatchStatisticsService;
 import org.hustsse.football.service.PlayerService;
 import org.hustsse.football.service.SkillStatisticsService;
@@ -83,6 +87,8 @@ public class DataPlayerController {
 	MatchStatisticsService matchStatisticsService;
 	@Autowired
 	SkillStatisticsService skillStatisticsService;
+	@Autowired
+	DeviceInfoService deviceInfoService;
 
 	/**
 	 * 数据查看首页
@@ -258,7 +264,7 @@ public class DataPlayerController {
 		map.put("coachesMap", coachlist);
 		Account a = (Account) session.getAttribute("ACCOUNT");
 		if(a.getRole() == RoleEnum.Admin) {
-			session.setAttribute("team", teamService.findById(teamId));
+			session.setAttribute("TEAM", teamService.findById(teamId));
 		}
 		return "players-index";
 	}
@@ -336,4 +342,81 @@ public class DataPlayerController {
 		return "admin-data-team-member-detailupload";
 	}
 
+
+	@RequestMapping(value="/import-device-info")
+	@ResponseBody
+	public AjaxResult importDeviceInfo(MultipartFile excel, Long playerId, Date date, PeriodEnum period, String entity) throws InvalidFormatException, IOException {
+		Player p = new Player();
+		p.setId(playerId);
+		DeviceInfo deviceInfo = new DeviceInfo();
+		deviceInfo.setPeriod(period);
+		deviceInfo.setDate(date);
+		deviceInfo.setPlayer(p);
+
+		Workbook wb = WorkbookFactory.create(excel.getInputStream());
+		Sheet sheet = wb.getSheetAt(0);
+		List<MonitorRecord> records = new LinkedList<MonitorRecord>();
+		Double maxHr = Double.MIN_VALUE;
+		Double minHr = Double.MAX_VALUE;
+		Double totalHr = 0D;
+		Double maxSpeed = Double.MIN_VALUE;
+		Double minSpeed = Double.MAX_VALUE;
+		Double totalSpeed = 0D;
+		Double totalDistance = 0D;
+		int i = 1;
+		for (; i<1000 ; i++) {	// 最多两个小时
+			Row row = sheet.getRow(i);
+			if(row == null)
+				break;
+			MonitorRecord r = new MonitorRecord();
+			r.setTime(row.getCell(0).getDateCellValue());
+			Double s = row.getCell(1).getNumericCellValue();
+			r.setSpeed(s);
+			totalSpeed += s;
+			if(s>maxSpeed) maxSpeed = s;
+			if(s<minSpeed) minSpeed = s;
+
+			Double d = row.getCell(2).getNumericCellValue();
+			r.setRunDistance(d);
+			totalDistance += d;
+
+			Double h = row.getCell(3).getNumericCellValue();
+			r.setHr(h);
+			totalHr += h;
+			if(s>maxHr) maxHr = h;
+			if(s<minHr) minHr = h;
+
+			records.add(r);
+		}
+		int sum = i - 1;
+		Double avgHr = totalHr / sum;
+		Double avgSpeed = totalSpeed /sum;
+		deviceInfo.setAvgHr(avgHr);
+		deviceInfo.setAvgSpeed(avgSpeed);
+		deviceInfo.setMaxHr(maxHr);
+		deviceInfo.setMinHr(minHr);
+		deviceInfo.setMinSpeed(minSpeed);
+		deviceInfo.setMaxSpeed(maxSpeed);
+		deviceInfo.setTotalDistance(totalDistance);
+		deviceInfo.setRecordSum(sum);
+
+		deviceInfo.setRecords(records);
+		deviceInfoService.importMonitorRecords(deviceInfo);
+		return new AjaxResult();
+	}
+
+	/**
+	 * 查看某个球员的设备采集信息
+	 *
+	 * @param account
+	 * @return
+	 */
+	@RequestMapping(value = "/device-info")
+	public String deviceInfo(@ModelAttribute("playerId") Long playerId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map) {
+		DeviceInfo info = deviceInfoService.findByPlayerAndDate(playerId, date, period);
+		map.put("info", info);
+		map.put("player",playerService.findById(playerId));
+		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
+		return "data-device-info";
+	}
 }
