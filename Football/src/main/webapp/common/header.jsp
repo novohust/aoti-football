@@ -13,7 +13,7 @@
                   	 	href="${ctx}/data/player/getTeam?teamId=${sessionScope.COACH.team.id}"
                </c:if>
                <c:if test="${sessionScope.ACCOUNT.role == 'Admin'}">
-                  	 	href="${ctx}/data/player/getTeam?teamId=${teamId}"
+                  	 	href="${ctx}/data/player/getTeam?teamId=${sessionScope.TEAM.id}"
                </c:if>
                   >数据</a>
           </li>
@@ -25,7 +25,7 @@
                   	 	href="${ctx}/video/coach?coachId=${sessionScope.COACH.id}"
                </c:if>
 				<c:if test="${sessionScope.ACCOUNT.role == 'Admin'}">
-                  	 	href="${ctx}/video/admin?teamId=${teamId}"
+                  	 	href="${ctx}/video/admin?teamId=${sessionScope.TEAM.id}"
                </c:if>
            >视频</a></li>
         </ul>
@@ -83,8 +83,8 @@
                 <c:if test="${sessionScope.ACCOUNT.role == 'Admin'}">
                 	<li>
                 	<%// team在admin登录查看某个球队信息时被保存在session中 -- team.jsp %>
-                	<a href="${ctx}/data/player/getTeam?teamId=${team.id}">
-                		${team.name}
+                	<a href="${ctx}/data/player/getTeam?teamId=${sessionScope.TEAM.id}">
+                		${sessionScope.TEAM.name}
                 	 </a></li>
 
 	                 <c:if test="${player!=null}">
