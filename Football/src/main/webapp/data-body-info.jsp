@@ -250,11 +250,10 @@ margin-bottom: 20px;}
         </div>
     </div>
 
-    <div id="chart-area">
+    <div id="chart-area" class='${device ne null ? "" :"hide"}'>
           <h4>球员在比赛中的速度</h4>
           <div class="title-tip">在5分钟期间球员的距离/在5分钟期间球员的高速奔跑和冲刺距离</div>
           <div id="chart1" class="speed-chart"></div>
-          <div id="chart2" class="speed-chart"></div>
     </div>
   </div>
 
@@ -262,79 +261,51 @@ margin-bottom: 20px;}
 	<script type="text/javascript">
         $(function(){
           $('#chart1').highcharts({
-            chart: {
-                type: 'line',
-                marginRight: 130,
-                marginBottom: 25
-            },
-            xAxis: {
-                categories: ['0分钟', '5分钟', '10分钟', '15分钟', '20分钟', '25分钟',
-                    '30分钟', '35分钟', '40分钟', '45分钟']
-            },
-            yAxis: {
-                title: {
-                    text: '速度 (m/s)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: 'm/s'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -10,
-                y: 100,
-                borderWidth: 0
-            },
-            series: [{
-                name: '张猛',
-                data: [7.0, 5.3, 2.1, 7.9, 9.1, 4.3, 4.5, 5.6, 8.0, 2.1]
-            }]
-        });
-
-
-
-    $('#chart2').highcharts({
-            chart: {
-                type: 'line',
-                marginRight: 130,
-                marginBottom: 25
-            },
-            xAxis: {
-                categories: ['45分钟', '50分钟', '55分钟', '60分钟', '65分钟', '70分钟',
-                    '75分钟', '80分钟', '85分钟', '90分钟']
-            },
-            yAxis: {
-                title: {
-                    text: '速度 (m/s)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: 'm/s'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -10,
-                y: 100,
-                borderWidth: 0
-            },
-            series: [{
-                name: '张猛',
-                data: [7.0, 5.3, 2.1, 7.9, 9.1, 4.3, 4.5, 5.6, 8.0, 2.1]
-            }]
+        	  chart:{zoomType: 'x',type:'spline'},
+        	  title:{
+             		text:null
+             	  },
+             	 plotOptions: {
+                     spline: {
+                         lineWidth: 1,
+                         states: {
+                             hover: {
+                                 lineWidth: 2
+                             }
+                         },
+                         marker: {
+                             enabled: false
+                         }
+                     }
+                 },
+                  xAxis: {
+                      categories: [
+      						<c:forEach var="r" items="${device.records}" varStatus="status">
+      							'<fmt:formatDate value="${r.time}" type="date" pattern="hh:mm:ss"/>'${(device.recordSum-1) == status.index?"":","}
+      						</c:forEach>
+                                   ],
+      				tickInterval:parseInt(${device.recordSum/10})
+                  },
+                  yAxis: {
+                      title: {
+                      	min:0,
+                          text: null
+                      }
+                  },
+                   legend: {
+                     enabled:false
+                  },
+                  credits: {
+                     enabled:false
+                  },
+                  series: [{
+                      name: '${player.name}',
+                      data: [
+      					<c:forEach var="r" items="${device.records}" varStatus="status">
+      					${r.speed}${(device.recordSum-1) == status.index?"":","}
+      					</c:forEach>
+                             ]
+                  }]
         });
       });
     </script>
