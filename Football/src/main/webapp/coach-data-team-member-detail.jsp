@@ -113,7 +113,7 @@
                 <td class="center">黄牌</td>
                 <td class="center">${info eq null ? nullTip : info.yellowCard}  </td>
                 <td class="center">红牌</td>
-                <td class="center">${info eq null ? nullTip : info.redCard}  0 </td>
+                <td class="center">${info eq null ? nullTip : info.redCard}  </td>
             </tr>
       </table>
       <!--table 2 end-->
