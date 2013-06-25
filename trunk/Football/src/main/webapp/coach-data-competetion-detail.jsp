@@ -116,7 +116,7 @@
               </tr>
               <tr>
                 <td class="right">超过25码长传</td>
-               <td ><<a href="javascript:void(0)" onclick="videoclick('Pass',this);">
+               <td ><a href="javascript:void(0)" onclick="videoclick('Pass',this);">
                    ${info eq null || info.totalShot eq null ? nullTip : info.longPass}</a></td>
               </tr>
               <tr>
