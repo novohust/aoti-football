@@ -181,9 +181,23 @@
     <script type="text/javascript">
         $(function(){
           $('#chart2').highcharts({
+       	  chart:{zoomType: 'x',type:'spline'},
        	  title:{
-       		text:null
-       	  },
+            		text:null
+            	  },
+          plotOptions: {
+                spline: {
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 2
+                        }
+                    },
+                    marker: {
+                        enabled: false
+                    }
+                }
+            },
             xAxis: {
                 categories: [
 						<c:forEach var="r" items="${info.records}" varStatus="status">
@@ -217,9 +231,23 @@
 
 
     $('#chart1').highcharts({
-    	title:{
-       		text:null
-       	  },
+    	chart:{zoomType: 'x',type:'spline'},
+     	  title:{
+          		text:null
+          	  },
+        plotOptions: {
+              spline: {
+                  lineWidth: 1,
+                  states: {
+                      hover: {
+                          lineWidth: 2
+                      }
+                  },
+                  marker: {
+                      enabled: false
+                  }
+              }
+          },
             xAxis: {
             	categories: [
    						<c:forEach var="r" items="${info.records}" varStatus="status">
