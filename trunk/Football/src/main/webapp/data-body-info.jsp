@@ -144,7 +144,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.highSpeedRunDistanceAndTimesS eq null ? nullTip : info.highSpeedRunDistanceAndTimesS}</td>
               </tr>
               <tr>
-                <td video-type>冲刺距离/次数<br>&rt;7米/每秒</td>
+                <td video-type>冲刺距离/次数<br>&gt;7米/每秒</td>
                 <td>${info eq null || info.spurtDistanceAndTimes eq null ? nullTip : info.spurtDistanceAndTimes}</td>
               </tr>
               <tr>
