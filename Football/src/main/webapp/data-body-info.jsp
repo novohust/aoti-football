@@ -84,7 +84,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.totalDistanceS eq null ? nullTip : info.totalDistanceS}</td>
               </tr>
               <tr>
-                <td video-type>站立距离</td>
+                <td video-type>站立距离<br>&lt;0.2米/每秒</td>
                 <td>${info eq null || info.standDistance eq null ? nullTip : info.standDistance}</td>
               </tr>
               <tr>
@@ -96,7 +96,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.standDistanceS eq null ? nullTip : info.standDistanceS}</td>
               </tr>
               <tr>
-                <td video-type>步行距离</td>
+                <td video-type>步行距离<br>&lt;0.2-2米/每秒</td>
                 <td>${info eq null || info.walkDistance eq null ? nullTip : info.walkDistance}</td>
               </tr>
               <tr>
@@ -108,7 +108,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.walkDistanceS eq null ? nullTip : info.walkDistanceS}</td>
               </tr>
               <tr>
-                <td video-type>慢跑距离</td>
+                <td video-type>慢跑距离<br>&lt;2-4米/每秒</td>
                 <td>${info eq null || info.slowRunDistance eq null ? nullTip : info.slowRunDistance}</td>
               </tr>
               <tr>
@@ -120,7 +120,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.slowRunDistanceS eq null ? nullTip : info.slowRunDistanceS}</td>
               </tr>
               <tr>
-                <td video-type>奔跑距离/次数</td>
+                <td video-type>奔跑距离/次数<br>&lt;4-5.5米/每秒</td>
                 <td>${info eq null || info.runDistanceAndTimes eq null ? nullTip : info.runDistanceAndTimes}</td>
               </tr>
               <tr>
@@ -132,7 +132,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.runDistanceAndTimesS eq null ? nullTip : info.runDistanceAndTimesS}</td>
               </tr>
               <tr>
-                <td video-type>高速奔跑距离/次数</td>
+                <td video-type>高速奔跑距离/次数<br>&lt;5.5-7米/每秒</td>
                 <td>${info eq null || info.highSpeedRunDistanceAndTimes eq null ? nullTip : info.highSpeedRunDistanceAndTimes}</td>
               </tr>
               <tr>
@@ -144,7 +144,7 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.highSpeedRunDistanceAndTimesS eq null ? nullTip : info.highSpeedRunDistanceAndTimesS}</td>
               </tr>
               <tr>
-                <td video-type>冲刺距离/次数</td>
+                <td video-type>冲刺距离/次数<br>&rt;7米/每秒</td>
                 <td>${info eq null || info.spurtDistanceAndTimes eq null ? nullTip : info.spurtDistanceAndTimes}</td>
               </tr>
               <tr>
@@ -156,11 +156,11 @@ margin-bottom: 20px;}
                 <td>${info eq null || info.spurtDistanceAndTimesS eq null ? nullTip : info.spurtDistanceAndTimesS}</td>
               </tr>
               <tr>
-                <td video-type>传球/准确次数</td>
+                <td video-type>传球/准确次数,%</td>
                 <td>${info eq null || info.passTimes eq null ? nullTip : info.passTimes}</td>
               </tr>
               <tr>
-                <td video-type>对决/成功次数</td>
+                <td video-type>对决/成功次数,%</td>
                 <td>${info eq null || info.battleTimes eq null ? nullTip : info.battleTimes}</td>
               </tr>
                 <tr>
