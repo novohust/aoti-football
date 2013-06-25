@@ -122,7 +122,10 @@ public class DataPlayerController {
 	@RequestMapping(value = "/body-info")
 	public String bodyInfo(@ModelAttribute("playerId") Long playerId, Date date, @ModelAttribute("period") PeriodEnum period, ModelMap map) {
 		BodyInfo info = bodyInfoService.findByPlayerAndDate(playerId, date, period);
+		DeviceInfo device = deviceInfoService.findByPlayerAndDate(playerId, date, period);
 		map.put("info", info);
+		map.put("device", device);
+		map.put("player", playerService.findById(playerId));
 		map.put("date", new SimpleDateFormat("yyyy-MM-dd").format(date));
 		return "data-body-info";
 	}
