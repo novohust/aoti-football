@@ -49,7 +49,7 @@
                 <iframe id="frame-skills" base="${ctx}/data/player/skills" src="${ctx}/data/player/skills?playerId=${playerId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
               </div>
               <div class="tab-pane fade" id="collect">
-                <iframe id="frame-collect" src="data-collect-admin.html" frameborder="0" scrolling=no></iframe>
+                <iframe id="frame-device" base="${ctx}/data/player/device-info" src="${ctx}/data/player/device-info?playerId=${playerId}&date=${today}&period=Morning" frameborder="0" scrolling=no></iframe>
               </div>
             </div>
     </div> <!-- /container -->
