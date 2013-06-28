@@ -39,12 +39,12 @@
               <li ><span>${info eq null ? nullTip : info.backupTimes}</span></li>
            </ul>
          </div>
-        	<img height="50" src="images/3.png" alt="武汉卓尔" class="btn" style="float: right;">
+        	<!-- <img height="50" src="images/3.png" alt="武汉卓尔" class="btn" style="float: right;"> -->
       </div>
        <!-- div 头部介绍以及图片 end-->
 
        <!--三个table -->
-      <div style="margin-top: 90px">
+      <div style="margin-top: 55px">
       <!--table 1 start-->
       <h5 class="table-title">进攻数据</h5>
       <table class="table  table-bordered table-striped">
