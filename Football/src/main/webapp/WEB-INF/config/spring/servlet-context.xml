@@ -56,6 +56,7 @@
             <mapping path="/data/player/*" />
             <mapping path="/video/*" />
             <mapping path="/player/*" />
+            <exclude-mapping path="/video/upload"/>
             <beans:bean class="org.hustsse.football.utils.SessionInterceptor" />
         </interceptor>
     </interceptors>
