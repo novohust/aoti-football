@@ -57,7 +57,7 @@
         $(function() {
                 thePlayer = jwplayer('myplayer').setup({
                 flashplayer: $.appCtx + '/static/swf/jwplayer.flash.swf',
-                file:"${videos[0].videoPath}",
+                file:$.appCtx + "${videos[0].videoPath}",
                 title:"${videos[0].name}",
                 width: 750,
                 logl:'',
