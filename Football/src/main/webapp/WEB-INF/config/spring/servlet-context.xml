@@ -26,6 +26,12 @@
 				<beans:property name="objectMapper">
 					<beans:bean class="org.hustsse.football.utils.HibernateAwareObjectMapper" />
 				</beans:property>
+				<beans:property name="supportedMediaTypes">
+	                <beans:list>
+	                    <beans:value>application/json</beans:value>
+	                    <beans:value>text/json</beans:value>
+	                </beans:list>
+            	</beans:property>
 			</beans:bean>
 		</message-converters>
 	</annotation-driven>

@@ -178,7 +178,7 @@ public class VideoController {
 		File videoDir = uploadVideoDir.getFile();
 		if (!videoDir.exists())
 			videoDir.mkdirs();
-		String newVideoName = System.currentTimeMillis() + "_" + video.getOriginalFilename();
+		String newVideoName = System.currentTimeMillis() + "."+video.getOriginalFilename().split("\\.")[1];
 		File dest = new File(videoDir, newVideoName);
 		video.transferTo(dest);
 
