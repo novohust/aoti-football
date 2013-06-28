@@ -59,6 +59,11 @@
             <exclude-mapping path="/video/upload"/>
             <beans:bean class="org.hustsse.football.utils.SessionInterceptor" />
         </interceptor>
+
+         <interceptor>
+            <mapping path="/data/player/*" />
+            <beans:bean class="org.hustsse.football.utils.TeamInceptor" />
+        </interceptor>
     </interceptors>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp  -->
